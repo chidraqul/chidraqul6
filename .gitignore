@@ -1,4 +1,5 @@
 chidraqul6
 chidraqul6.exe
+*.exe
 *.o
 .DS_Store
