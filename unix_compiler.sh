@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir -p obj
 while :
 do
     clear
