@@ -33,6 +33,7 @@ int main()
 	InitWorld();
 #ifdef __APPLE__
 	initscr();
+    //system("stty -icanon time 0 min 0"); //code stolen from chidraqul4 (bash) didn't test yet but can be usefull if keypresses stuck the programm
 #endif // __APPLE__
     
 	player.Spawn();
