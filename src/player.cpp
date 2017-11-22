@@ -6,6 +6,8 @@
 #include "player.h"
 #include "controls.h"
 #include "world.h"
+#include "base.h"
+#include "system.h"
 
 int aBlock[16][3]; // [INDEX] [0 = Alive 1 = PosX 2 = PosY]
 
@@ -86,7 +88,11 @@ void CPlayer::Move(int dirX, int dirY, char world)
 		ChillSetCursor(PosX, PosY);
 		std::cout << Skin;
 		ChillSetCursor(0, 8);
-		std::cout << "x[ " << PosX << " ] y[ " << PosY << " ]";
+		//std::cout << "x[ " << PosX << " ] y[ " << PosY << " ]";
+        char aBuf[64];
+        //str_format(aBuf, sizeof(aBuf), "x[%d] y[%d]", PosX, PosY);
+        PrintCurrentPos(aBuf);
+        SystemTest();
 	}
 }
 
