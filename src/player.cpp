@@ -7,7 +7,6 @@
 #include "controls.h"
 #include "world.h"
 #include "base.h"
-#include "system.h"
 
 int aBlock[16][3]; // [INDEX] [0 = Alive 1 = PosX 2 = PosY]
 
@@ -46,8 +45,10 @@ void CPlayer::Move(int dirX, int dirY, char world)
 	if (IsAlive)
 	{
 		//remove old character
+        char aBuf[64];
 		ChillSetCursor(PosX, PosY);
-		std::cout << world;
+        str_format(aBuf, sizeof(aBuf), "%c", world); //TODO: find better way to convert char to const char *
+        PrintCurrentPos(aBuf);
 		int OldPosX = PosX;
 		int OldPosY = PosY;
 		
@@ -86,11 +87,12 @@ void CPlayer::Move(int dirX, int dirY, char world)
 
 		//print new character
 		ChillSetCursor(PosX, PosY);
-		std::cout << Skin;
-		ChillSetCursor(0, 8);
-		//std::cout << "x[ " << PosX << " ] y[ " << PosY << " ]";
-        char aBuf[64];
+        str_format(aBuf, sizeof(aBuf), "%c", Skin);
+        PrintCurrentPos(aBuf);
         str_format(aBuf, sizeof(aBuf), "x[%d] y[%d]", PosX, PosY);
+        ChillSetCursor(0, 8);
+        PrintCurrentPos("                     "); //cleanup
+        ChillSetCursor(0, 8);
         PrintCurrentPos(aBuf);
 	}
 }
@@ -141,7 +143,7 @@ void CPlayer::PlaceBlock()
 
 		//print block
 		ChillSetCursor(aBlock[BlockIndex][1], aBlock[BlockIndex][2]);
-		std::cout << "o";
+        PrintCurrentPos("o");
 	}
 
 
@@ -153,12 +155,12 @@ void CPlayer::PlaceBlock()
 	if (BlockIndex == -1)
 	{
 		ChillSetCursor(2, 12);
-		std::cout << "no blocks";
+        PrintCurrentPos("no blocks");
 	}
 	else
 	{
 		ChillSetCursor(2, 12);
-		std::cout << "block placed";
+        PrintCurrentPos("block placed");
 	}
 }
 

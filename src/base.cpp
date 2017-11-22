@@ -4,7 +4,6 @@
 
 #include "base.h"
 
-
 void PauseGame()
 {
 #ifdef _WIN32

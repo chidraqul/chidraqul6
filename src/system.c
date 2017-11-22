@@ -7,6 +7,10 @@
 #include "stdlib.h"
 #include "stdio.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int str_format(char *buffer, int buffer_size, const char *format, ...)
 {
 	int ret;
@@ -25,3 +29,7 @@ int str_format(char *buffer, int buffer_size, const char *format, ...)
 	buffer[buffer_size - 1] = 0; /* assure null termination */
 	return ret;
 }
+
+#ifdef __cplusplus
+}
+#endif

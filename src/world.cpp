@@ -19,11 +19,14 @@ void ResetWorld()
 void PrintWorld()
 {
 	ChillSetCursor(0,6);
+    char aBuf[2];
 	for (int i = 0; i <= WORLD_SIZE_X; i++) 
 	{
-		std::cout << aWorld[i];
+		//std::cout << aWorld[i];
+        str_format(aBuf, sizeof(aBuf), "%c", aWorld[i]); //TODO: make dis better
+        PrintCurrentPos(aBuf);
 	}
-    std::cout.flush(); //needed for OSX
+    //std::cout.flush(); //needed for OSX
 }
 
 void InitWorld()

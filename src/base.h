@@ -19,6 +19,8 @@
 #include <curses.h>
 #endif
 
+#include "system.h"
+
 #ifdef __APPLE__
 int kbhit(void);
 void KeyPrinter();
