@@ -8,40 +8,21 @@
 
 void RenderFrame(CPlayer& player)
 {
-#ifdef __APPLE__
-    /*
-	refresh();
-	move(2, 0);
-	printw("__________");
-	move(2, player.PosX);
-	printw(&player.Skin);
-	move(4, 9);
-	int fps = rand() % 9;
-    printw("fps: %d", fps);
-	move(20, 30);
-     */
+    char aBuf[128];
+    
     ChillSetCursor(0, 9);
-    //std::cout << "Jump: " << player.IsJump << " " << "TilesJumped: " <<player.TilesJumped;
-    PrintCurrentPos("Jump:");
+    str_format(aBuf, sizeof(aBuf), "Jump: %d TilesJumped: %d", player.IsJump, player.TilesJumped);
+    PrintCurrentPos(aBuf);
     ChillSetCursor(0, 10);
-    //std::cout << "DirX: " << LastInpDirX;
-    PrintCurrentPos("DirX:");
+    PrintCurrentPos("DirX:   "); //clear old value
+    ChillSetCursor(0, 10);
+    str_format(aBuf, sizeof(aBuf), "DirX: %d", LastInpDirX);
+    PrintCurrentPos(aBuf);
     ChillSetCursor(0, 11);
-    //std::cout << "AimDir:       "; //clear old value
-    PrintCurrentPos("AimDir:");
-    //ChillSetCursor(0, 11);
-    //std::cout << "AimDir: " << player.AimDir;
-#endif // __APPLE__
-#ifdef _WIN32
-	ChillSetCursor(0, 9);
-	std::cout << "Jump: " << player.IsJump << " " << "TilesJumped: " <<player.TilesJumped;
-	ChillSetCursor(0, 10);
-	std::cout << "DirX: " << LastInpDirX;
-	ChillSetCursor(0, 11);
-	std::cout << "AimDir:       "; //clear old value
-	ChillSetCursor(0, 11);
-	std::cout << "AimDir: " << player.AimDir;
-#endif // _WIN32
+    PrintCurrentPos("AimDir:       "); //clear old value
+    ChillSetCursor(0, 11);
+    str_format(aBuf, sizeof(aBuf), "AimDir: %d", player.AimDir);
+    PrintCurrentPos(aBuf);
 }
 
 

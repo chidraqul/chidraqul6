@@ -5,6 +5,8 @@
 #ifndef BASE_H
 #define BASE_H
 #include <iostream>
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>         // std::chrono::seconds
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
