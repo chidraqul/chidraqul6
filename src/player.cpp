@@ -90,9 +90,8 @@ void CPlayer::Move(int dirX, int dirY, char world)
 		ChillSetCursor(0, 8);
 		//std::cout << "x[ " << PosX << " ] y[ " << PosY << " ]";
         char aBuf[64];
-        //str_format(aBuf, sizeof(aBuf), "x[%d] y[%d]", PosX, PosY);
+        str_format(aBuf, sizeof(aBuf), "x[%d] y[%d]", PosX, PosY);
         PrintCurrentPos(aBuf);
-        SystemTest();
 	}
 }
 
