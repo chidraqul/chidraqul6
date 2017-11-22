@@ -8,5 +8,6 @@
 
 void RenderFrame(CPlayer& player);
 void ChillSetCursor(int x, int y);
+void PrintCurrentPos(const char * str);
 
 #endif //RENDER_H
