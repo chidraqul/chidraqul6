@@ -5,6 +5,8 @@
 //windows clearup commit1
 
 
+#include <boost/lambda/lambda.hpp>
+
 #include "chidraqul6.h"
 #include "world.h"
 #include "controls.h"
