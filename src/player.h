@@ -32,6 +32,9 @@ public:
 	void PlaceBlock();
 	void OnTick();
 
+	//settings
+	bool IsDebug;
+
 	//Constructror
 	CPlayer();
 

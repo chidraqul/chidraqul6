@@ -8,21 +8,24 @@
 
 void RenderFrame(CPlayer& player)
 {
-    char aBuf[128];
-    
-    ChillSetCursor(0, 9);
-    str_format(aBuf, sizeof(aBuf), "Jump: %d TilesJumped: %d", player.IsJump, player.TilesJumped);
-    PrintCurrentPos(aBuf);
-    ChillSetCursor(0, 10);
-    PrintCurrentPos("DirX:   "); //clear old value
-    ChillSetCursor(0, 10);
-    str_format(aBuf, sizeof(aBuf), "DirX: %d", LastInpDirX);
-    PrintCurrentPos(aBuf);
-    ChillSetCursor(0, 11);
-    PrintCurrentPos("AimDir:       "); //clear old value
-    ChillSetCursor(0, 11);
-    str_format(aBuf, sizeof(aBuf), "AimDir: %d", player.AimDir);
-    PrintCurrentPos(aBuf);
+	if (player.IsDebug)
+	{
+		char aBuf[128];
+
+		ChillSetCursor(0, 9);
+		str_format(aBuf, sizeof(aBuf), "Jump: %d TilesJumped: %d", player.IsJump, player.TilesJumped);
+		PrintCurrentPos(aBuf);
+		ChillSetCursor(0, 10);
+		PrintCurrentPos("DirX:   "); //clear old value
+		ChillSetCursor(0, 10);
+		str_format(aBuf, sizeof(aBuf), "DirX: %d", LastInpDirX);
+		PrintCurrentPos(aBuf);
+		ChillSetCursor(0, 11);
+		PrintCurrentPos("AimDir:       "); //clear old value
+		ChillSetCursor(0, 11);
+		str_format(aBuf, sizeof(aBuf), "AimDir: %d", player.AimDir);
+		PrintCurrentPos(aBuf);
+	}
 }
 
 
