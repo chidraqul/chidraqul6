@@ -9,6 +9,7 @@
 #include "world.h"
 #include "controls.h"
 #include "render.h"
+#include "networking_client.h"
 
 CPlayer player;
 
@@ -18,6 +19,7 @@ void OnTick()
     HandleInputs(player); //creates LastInpDirX
 	player.OnTick(); //uses LastInpDirX to keep moving in fall
 	RenderFrame(player);
+	SendPosition(player);
 #ifdef __APPLE__
     //system("sleep 0.000000001"); //shit xd
 #endif // __APPLE__
