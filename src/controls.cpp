@@ -67,6 +67,10 @@ void HandleInputs(CPlayer& player)
     {
         player.PlaceBlock();
     }
+	else if (key == 'o')
+	{
+		player.IsDebug ^= 1;
+	}
     
     if (key == 'a' || key == 'd') //umoved left or right
     {
