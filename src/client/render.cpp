@@ -4,10 +4,15 @@
 
 #include "base.h"
 #include "render.h"
+#include "world.h"
 #include "controls.h" //TODO: remove me beause only used for debugging
 
 void RenderFrame(CPlayer& player, int recv_pos)
 {
+	//render all players
+	//TODO: iterate through all players and update them
+
+	//render hud
 	if (player.IsDebug)
 	{
 		char aBuf[128];

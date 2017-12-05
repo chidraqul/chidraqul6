@@ -24,19 +24,19 @@ int SendPosition(int pos)
 	addr.sin_port = htons(5555);
 
 	connect(server, (SOCKADDR *)&addr, sizeof(addr));
-	std::cout << "Connected to server!" << std::endl;
+	//std::cout << "Connected to server!" << std::endl;
 
 	char buffer[1024];
 	str_format(buffer, sizeof(buffer), "%d", pos);
 
 	send(server, buffer, sizeof(buffer), 0);
-	std::cout << "send: " << buffer << std::endl;
-	std::cout << "Message sent!" << std::endl;
+	//std::cout << "send: " << buffer << std::endl;
+	//std::cout << "Message sent!" << std::endl;
 
 
     closesocket(server);
 	WSACleanup();
 
-	std::cout << "Socket closed." << std::endl << std::endl;
+	//std::cout << "Socket closed." << std::endl << std::endl;
 }
 #endif

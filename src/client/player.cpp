@@ -36,6 +36,8 @@ bool CPlayer::IsGrounded()
 
 void CPlayer::Spawn()
 {
+	PosX = 5;
+	PosY = 0;
 	IsAlive = true;
 	Move(0,0,' '); //update position to render frame
 }

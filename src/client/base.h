@@ -28,7 +28,6 @@ int kbhit(void);
 void KeyPrinter();
 #endif
 
-
 void PauseGame();
 void ChillClearScreen();
 int DetectOS();
