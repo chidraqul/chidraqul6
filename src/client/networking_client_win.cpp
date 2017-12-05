@@ -5,13 +5,12 @@
 #ifdef _WIN32
 
 #include "networking_client_win.h"
-#include "player.h"
 #include "base.h"
 
 #include <iostream>
 #include <winsock2.h>
 
-void SendPosition(CPlayer& player)
+int SendPosition(int pos)
 {
 	WSADATA WSAData;
 	SOCKET server;
@@ -28,7 +27,7 @@ void SendPosition(CPlayer& player)
 	std::cout << "Connected to server!" << std::endl;
 
 	char buffer[1024];
-	str_format(buffer, sizeof(buffer), "%d", player.PosX);
+	str_format(buffer, sizeof(buffer), "%d", pos);
 
 	send(server, buffer, sizeof(buffer), 0);
 	std::cout << "send: " << buffer << std::endl;
