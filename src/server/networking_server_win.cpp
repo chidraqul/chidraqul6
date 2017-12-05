@@ -2,7 +2,9 @@
 //ChillerDragon copyright (c)
 //started development 2017
 
-#include "networking_server.h"
+#ifdef _WIN32
+
+#include "networking_server_win.h"
 
 #include <iostream>
 #include <winsock2.h>
@@ -49,3 +51,5 @@ int main()
 		}
 	}
 }
+
+#endif

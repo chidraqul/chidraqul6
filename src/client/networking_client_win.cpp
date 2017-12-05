@@ -2,7 +2,9 @@
 //ChillerDragon copyright (c)
 //started development 2017
 
-#include "networking_client.h"
+#ifdef _WIN32
+
+#include "networking_client_win.h"
 #include "player.h"
 #include "base.h"
 
@@ -32,7 +34,10 @@ void SendPosition(CPlayer& player)
 	std::cout << "send: " << buffer << std::endl;
 	std::cout << "Message sent!" << std::endl;
 
-	closesocket(server);
+
+    closesocket(server);
 	WSACleanup();
+
 	std::cout << "Socket closed." << std::endl << std::endl;
 }
+#endif

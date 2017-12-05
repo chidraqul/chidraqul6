@@ -9,7 +9,12 @@
 #include "world.h"
 #include "controls.h"
 #include "render.h"
-#include "networking_client.h"
+
+#ifdef _WIN32
+#include "networking_client_win.h"
+#elif (__APPLE__) || (__linux__)
+#include "networking_client_osx.h"
+#endif
 
 CPlayer player;
 
