@@ -1,5 +1,7 @@
 chidraqul6
+chidraqul6_srv
 chidraqul6.exe
+chidraqul6_srv.exe
 *.exe
 *.o
 .DS_Store
