@@ -6,7 +6,7 @@
 #define RENDER_H
 #include "player.h"
 
-void RenderFrame(CPlayer& player);
+void RenderFrame(CPlayer& player, int recv_pos);
 void ChillSetCursor(int x, int y);
 void PrintCurrentPos(const char * str);
 

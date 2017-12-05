@@ -17,16 +17,23 @@
 #endif
 
 CPlayer player;
+CPlayer player_net;
 
 
 void OnTick()
 { 
     HandleInputs(player); //creates LastInpDirX
 	player.OnTick(); //uses LastInpDirX to keep moving in fall
-	RenderFrame(player);
-	SendPosition(player.PosX);
+    player_net.OnTick();
+#ifdef _WIN32
+    SendPosition(player.PosX);
+    RenderFrame(player, 404);
+#endif // _WIN32
 #ifdef __APPLE__
     //system("sleep 0.000000001"); //shit xd
+    int recv_pos = SendPosition(player.PosX);
+    RenderFrame(player, recv_pos);
+    player_net.PosX = recv_pos;
 #endif // __APPLE__
 }
 

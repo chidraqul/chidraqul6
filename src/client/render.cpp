@@ -6,7 +6,7 @@
 #include "render.h"
 #include "controls.h" //TODO: remove me beause only used for debugging
 
-void RenderFrame(CPlayer& player)
+void RenderFrame(CPlayer& player, int recv_pos)
 {
 	if (player.IsDebug)
 	{
@@ -25,6 +25,9 @@ void RenderFrame(CPlayer& player)
 		ChillSetCursor(0, 11);
 		str_format(aBuf, sizeof(aBuf), "AimDir: %d", player.AimDir);
 		PrintCurrentPos(aBuf);
+        ChillSetCursor(0, 12);
+        str_format(aBuf, sizeof(aBuf), "recv: %d", recv_pos);
+        PrintCurrentPos(aBuf);
 	}
 }
 

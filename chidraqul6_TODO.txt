@@ -1,5 +1,5 @@
 + put whole world in a twodemensional array (not for printing but for gamechecks if like collision(much faster than checing all blocks))
+
 + use new array to check if aimdir spot is free and print a '.' or another char to show aimdirection and where a block would be placed
 
-+ add telnet multiplayer server
-+ add compilers agian for new multifile system
++ move player render out of player.cpp move() and render all players in render.cpp and iterate through all players (multiplayer)

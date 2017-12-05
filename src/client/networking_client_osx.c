@@ -56,7 +56,7 @@ int SendPosition(int pos)
     
     if ((rv = getaddrinfo("127.0.0.1", PORT, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-        return 1;
+        return -1;
     }
     
     // loop through all the results and connect to the first we can
@@ -78,12 +78,12 @@ int SendPosition(int pos)
     
     if (p == NULL) {
         fprintf(stderr, "client: failed to connect\n");
-        return 2;
+        return -2;
     }
     
     inet_ntop(p->ai_family, get_in_addr((struct sockaddr *)p->ai_addr),
               s, sizeof s);
-    printf("client: connecting to %s\n", s);
+    //printf("client: connecting to %s\n", s);
     
     freeaddrinfo(servinfo); // all done with this structure
     
@@ -94,11 +94,13 @@ int SendPosition(int pos)
     
     buf[numbytes] = '\0';
     
-    printf("client: received '%s'\n",buf);
+    //printf("client: received '%s'\n",buf);
+    int recv_pos = atoi(buf);
+    
     
     close(sockfd);
     
-    return 0;
+    return recv_pos;
 }
 
 

@@ -50,6 +50,7 @@ void *get_in_addr(struct sockaddr *sa)
 
 int main(void)
 {
+    
     int sockfd, new_fd;  // listen on sock_fd, new connection on new_fd
     struct addrinfo hints, *servinfo, *p;
     struct sockaddr_storage their_addr; // connector's address information
@@ -129,7 +130,7 @@ int main(void)
         
         if (!fork()) { // this is the child process
             close(sockfd); // child doesn't need the listener
-            if (send(new_fd, "Hello, world!", 13, 0) == -1)
+            if (send(new_fd, "3", 13, 0) == -1)
             perror("send");
             close(new_fd);
             exit(0);
