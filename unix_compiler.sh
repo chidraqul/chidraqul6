@@ -19,8 +19,8 @@ do
 
     #server
     echo "[SERVER]"
-    clang++ src/server/*.cpp -c
-    clang++ *.o -o chidraqul6_srv
+    clang src/server/*.c -c
+    clang *.o -o chidraqul6_srv
     mv *.o obj
     echo "========================================="
     echo "finished press any key to compile agian."

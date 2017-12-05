@@ -4,8 +4,15 @@
 
 #ifndef NETWORKING_CLIENT_OSX_H
 #define NETWORKING_CLIENT_OSX_H
-#include "player.h"
 
-void SendPosition(CPlayer& player);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+int SendPosition(int pos);
+
+#ifdef __cplusplus
+}
+#endif
+    
 #endif

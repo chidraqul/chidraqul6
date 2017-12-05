@@ -24,7 +24,7 @@ void OnTick()
     HandleInputs(player); //creates LastInpDirX
 	player.OnTick(); //uses LastInpDirX to keep moving in fall
 	RenderFrame(player);
-	SendPosition(player);
+	SendPosition(player.PosX);
 #ifdef __APPLE__
     //system("sleep 0.000000001"); //shit xd
 #endif // __APPLE__
