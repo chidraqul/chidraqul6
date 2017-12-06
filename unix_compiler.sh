@@ -20,6 +20,10 @@ do
     clang++ *.o -lcurses -o chidraqul6
     mv *.o obj
 
+    #base
+    echo "[BASE]"
+    clang src/base/*.c -c
+
     #server
     echo "[SERVER]"
     clang src/server/*.c -c
