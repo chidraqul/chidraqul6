@@ -9,6 +9,9 @@ do
     #old unused
     #g++ src/*.cpp -o chidraqul6
 
+    #base
+    echo "[BASE]"
+    clang src/base/*.c -c
 
     #client
     echo "[CLIENT]"
