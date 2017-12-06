@@ -24,8 +24,9 @@ extern "C" {
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
-
 #include <arpa/inet.h>
+    
+#include "../base/system.h"
 
 #define PORT "3490" // the port client will be connecting to
 
@@ -44,7 +45,7 @@ void *get_in_addr(struct sockaddr *sa)
 int SendPosition(int pos)
 {
     int sockfd, numbytes;
-    char buf[MAXDATASIZE];
+    char aBuf[MAXDATASIZE];
     struct addrinfo hints, *servinfo, *p;
     int rv;
     char s[INET6_ADDRSTRLEN];
@@ -87,16 +88,18 @@ int SendPosition(int pos)
     
     freeaddrinfo(servinfo); // all done with this structure
     
-    if ((numbytes = recv(sockfd, buf, MAXDATASIZE-1, 0)) == -1) {
+    str_format(aBuf, sizeof(aBuf), "%d", pos);
+    send(sockfd, aBuf, MAXDATASIZE-1,0);
+    
+    if ((numbytes = recv(sockfd, aBuf, MAXDATASIZE-1, 0)) == -1) {
         perror("recv");
         exit(1);
     }
     
-    buf[numbytes] = '\0';
+    aBuf[numbytes] = '\0';
     
-    //printf("client: received '%s'\n",buf);
-    int recv_pos = atoi(buf);
-    
+    //printf("client: received '%s'\n",aBuf);
+    int recv_pos = atoi(aBuf);
     
     close(sockfd);
     

@@ -22,11 +22,26 @@
 #include <arpa/inet.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <time.h>
 #include "../base/system.h"
 
 #define PORT "3490"  // the port users will be connecting to
 
 #define BACKLOG 10     // how many pending connections queue will hold
+
+unsigned long mix(unsigned long a, unsigned long b, unsigned long c)
+{
+    a=a-b;  a=a-c;  a=a^(c >> 13);
+    b=b-c;  b=b-a;  b=b^(a << 8);
+    c=c-a;  c=c-b;  c=c^(b >> 13);
+    a=a-b;  a=a-c;  a=a^(c >> 12);
+    b=b-c;  b=b-a;  b=b^(a << 16);
+    c=c-a;  c=c-b;  c=c^(b >> 5);
+    a=a-b;  a=a-c;  a=a^(c >> 3);
+    b=b-c;  b=b-a;  b=b^(a << 10);
+    c=c-a;  c=c-b;  c=c^(b >> 15);
+    return c;
+}
 
 void sigchld_handler(int s)
 {
@@ -130,10 +145,17 @@ int main(void)
         printf("server: got connection from %s\n", s);
         
         char aBuf[16];
-        str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
         
         if (!fork()) { // this is the child process
             close(sockfd); // child doesn't need the listener
+            //RECIVE
+            memset(aBuf, 0, sizeof(aBuf));
+            recv(new_fd, aBuf, sizeof(aBuf), 0);
+            printf("Client [%s]\n", aBuf);
+            
+            //SEND
+            srand(mix(clock(), time(NULL), getpid())); //needed because fork and child process i guess to get a new random value
+            str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
             if (send(new_fd, aBuf, sizeof(aBuf), 0) == -1)
             {
                 perror("send");
