@@ -12,6 +12,7 @@ echo ============================
 :: unused old stuff
 ::g++ -Wall -Wextra src/*.cpp -o chidraqul6
 ::g++ -I %boost_path% src/*.cpp -c
+::g++ -Wall -Wextra src/server/*.cpp -o chidraqul6_srv -lws2_32
 
 
 :: base
@@ -24,9 +25,15 @@ g++ src/client/*.cpp -c
 g++ *.o -o chidraqul6 -lws2_32
 move *.o objs >NUL
 
+:: base
+echo [BASE]
+gcc src/base/*.c -c
+
 :: server
 echo [SERVER]
-g++ -Wall -Wextra src/server/*.cpp -o chidraqul6_srv -lws2_32
+g++ src/server/*.cpp -c
+g++ *.o -o chidraqul6_srv -lws2_32
+move *.o objs >NUL
 
 echo ============================
 echo finished compile. press any key to compile agian

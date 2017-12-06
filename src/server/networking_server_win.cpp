@@ -42,6 +42,8 @@ int main()
 
 			recv(client, aBuf, sizeof(aBuf), 0);
 			std::cout << "Client x[" << aBuf << "]" << std::endl;
+			str_format(aBuf, sizeof(aBuf), "%d", 9);
+			send(client, aBuf, sizeof(aBuf), 0);
 			memset(aBuf, 0, sizeof(aBuf));
 
 
