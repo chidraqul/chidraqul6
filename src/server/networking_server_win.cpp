@@ -9,8 +9,6 @@
 #include <iostream>
 #include <winsock2.h>
 
-using namespace std;
-
 int main()
 {
 	WSADATA WSAData;
@@ -33,21 +31,21 @@ int main()
 	{
 		listen(server, 0);
 
-		cout << "Listening for incoming connections..." << endl;
+		std::cout << "Listening for incoming connections..." << std::endl;
 
-		char buffer[1024];
+		char aBuf[1024];
 		int clientAddrSize = sizeof(clientAddr);
 		if ((client = accept(server, (SOCKADDR *)&clientAddr, &clientAddrSize)) != INVALID_SOCKET)
 		{
-			cout << "Client connected!" << endl;
+			//std::cout << "Client connected!" << std::endl;
 
-			recv(client, buffer, sizeof(buffer), 0);
-			cout << "Client says: " << buffer << endl;
-			memset(buffer, 0, sizeof(buffer));
+			recv(client, aBuf, sizeof(aBuf), 0);
+			std::cout << "Client x[" << aBuf << "]" << std::endl;
+			memset(aBuf, 0, sizeof(aBuf));
 
 
 			closesocket(client);
-			cout << "Client disconnected." << endl;
+			//std::cout << "Client disconnected." << std::endl;
 		}
 	}
 }
