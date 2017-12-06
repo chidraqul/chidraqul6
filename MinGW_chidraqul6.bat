@@ -14,9 +14,12 @@ echo ============================
 ::g++ -I %boost_path% src/*.cpp -c
 
 
+:: base
+echo [BASE]
+gcc src/base/*.c -c
+
 :: client
 echo [CLIENT]
-gcc src/client/*.c -c
 g++ src/client/*.cpp -c
 g++ *.o -o chidraqul6 -lws2_32
 move *.o objs >NUL

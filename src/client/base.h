@@ -21,7 +21,7 @@
 #include <chrono>         // std::chrono::seconds
 #endif
 
-#include "system.h"
+#include "../base/system.h"
 
 #ifdef __APPLE__
 int kbhit(void);
