@@ -30,6 +30,7 @@ public:
 	bool IsGrounded();
 	void Spawn();
 	void Move(int dirX, int dirY, char world);
+	void UpdatePosition(int X, int Y, char world);
 	void PlaceBlock();
 	void OnTick();
 

@@ -99,6 +99,31 @@ void CPlayer::Move(int dirX, int dirY, char world)
 	}
 }
 
+void CPlayer::UpdatePosition(int X, int Y, char world)
+{
+	if (IsAlive)
+	{
+		//remove old character
+		char aBuf[64];
+		ChillSetCursor(PosX, PosY);
+		str_format(aBuf, sizeof(aBuf), "%c", world); //TODO: find better way to convert char to const char *
+		PrintCurrentPos(aBuf);
+
+		PosX = X;
+		PosY = Y;
+
+		//print new character
+		ChillSetCursor(PosX, PosY);
+		str_format(aBuf, sizeof(aBuf), "%c", Skin);
+		PrintCurrentPos(aBuf);
+		str_format(aBuf, sizeof(aBuf), "x[%d] y[%d]", PosX, PosY);
+		ChillSetCursor(0, 8);
+		PrintCurrentPos("                     "); //cleanup
+		ChillSetCursor(0, 8);
+		PrintCurrentPos(aBuf);
+	}
+}
+
 void CPlayer::PlaceBlock()
 {
 	//check world border

@@ -9,6 +9,7 @@
 #include <iostream>
 #include <winsock2.h>
 #include "../base/system.h"
+#include "server.h"
 
 int main()
 {
@@ -40,9 +41,15 @@ int main()
 		{
 			//std::cout << "Client connected!" << std::endl;
 
+			//RECIVE data
 			recv(client, aBuf, sizeof(aBuf), 0);
 			std::cout << "Client x[" << aBuf << "]" << std::endl;
-			str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
+
+			//PROCESS data (handelt in server.cpp)
+			//str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
+			MainDataJuggeling(aBuf);
+
+			//SEND data
 			send(client, aBuf, sizeof(aBuf), 0);
 			std::cout << "Server x[" << aBuf << "]" << std::endl;
 			memset(aBuf, 0, sizeof(aBuf));
