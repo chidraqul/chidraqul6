@@ -32,7 +32,7 @@ int main()
 	{
 		listen(server, 0);
 
-		std::cout << "Listening for incoming connections..." << std::endl;
+		//std::cout << "Listening for incoming connections..." << std::endl;
 
 		char aBuf[1024];
 		int clientAddrSize = sizeof(clientAddr);
@@ -42,8 +42,9 @@ int main()
 
 			recv(client, aBuf, sizeof(aBuf), 0);
 			std::cout << "Client x[" << aBuf << "]" << std::endl;
-			str_format(aBuf, sizeof(aBuf), "%d", 9);
+			str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
 			send(client, aBuf, sizeof(aBuf), 0);
+			std::cout << "Server x[" << aBuf << "]" << std::endl;
 			memset(aBuf, 0, sizeof(aBuf));
 
 

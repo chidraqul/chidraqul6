@@ -14,6 +14,7 @@
 #endif
 
 CPlayer *pPlayer = new CPlayer;
+CPlayer *pPlayer2 = new CPlayer;
 
 void OnTick()
 { 
@@ -21,7 +22,7 @@ void OnTick()
 	pPlayer->OnTick(); //uses LastInpDirX to keep moving in fall
 	int recv_pos = SendPosition(pPlayer->PosX);
 	RenderFrame(*pPlayer, recv_pos);
-	//player_net.PosX = recv_pos;
+	pPlayer2->Move(recv_pos,0,' ');
 #ifdef __APPLE__
     //system("sleep 0.000000001"); //shit xd
 #endif // __APPLE__
@@ -44,6 +45,7 @@ int main()
 #endif // __APPLE__
 
 	pPlayer->Spawn();
+	pPlayer2->Spawn();
 
     while (true)
     {

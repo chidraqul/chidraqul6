@@ -26,17 +26,23 @@ int SendPosition(int pos)
 	connect(server, (SOCKADDR *)&addr, sizeof(addr));
 	//std::cout << "Connected to server!" << std::endl;
 
-	char buffer[1024];
-	str_format(buffer, sizeof(buffer), "%d", pos);
+	char aBuf[1024];
+	str_format(aBuf, sizeof(aBuf), "%d", pos);
 
-	send(server, buffer, sizeof(buffer), 0);
-	//std::cout << "send: " << buffer << std::endl;
+	send(server, aBuf, sizeof(aBuf), 0);
+	//std::cout << "send: " << aBuf << std::endl;
 	//std::cout << "Message sent!" << std::endl;
+
+	memset(aBuf, 0, sizeof(aBuf));
+	recv(server, aBuf, sizeof(aBuf), 0);
+
 
 
     closesocket(server);
 	WSACleanup();
 
 	//std::cout << "Socket closed." << std::endl << std::endl;
+
+	return atoi(aBuf);
 }
 #endif
