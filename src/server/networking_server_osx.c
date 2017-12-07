@@ -4,6 +4,10 @@
 
 #if defined(__APPLE__) || defined(__linux__)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "networking_server_osx.h"
 
 /*
@@ -23,7 +27,9 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <time.h>
+
 #include "../base/system.h"
+#include "server.h"
 
 #define PORT "3490"  // the port users will be connecting to
 
@@ -148,14 +154,20 @@ int main(void)
         
         if (!fork()) { // this is the child process
             close(sockfd); // child doesn't need the listener
-            //RECIVE
+            
+            
+            //=== RECIVE ===
             memset(aBuf, 0, sizeof(aBuf));
             recv(new_fd, aBuf, sizeof(aBuf), 0);
             printf("Client [%s]\n", aBuf);
             
-            //SEND
-            srand(mix(clock(), time(NULL), getpid())); //needed because fork and child process i guess to get a new random value
-            str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
+            //=== PROCESS data ===   (handelt in server.cpp)
+            //srand(mix(clock(), time(NULL), getpid())); //new rand needed every tick because fork
+            //str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
+            MainDataJuggeling(aBuf);
+            
+            
+            //=== SEND ===
             if (send(new_fd, aBuf, sizeof(aBuf), 0) == -1)
             {
                 perror("send");
@@ -164,6 +176,9 @@ int main(void)
             {
                 printf("Server [%s]\n", aBuf);
             }
+            
+            
+            
             close(new_fd);
             exit(0);
         }
@@ -172,6 +187,10 @@ int main(void)
     
     return 0;
 }
+    
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif

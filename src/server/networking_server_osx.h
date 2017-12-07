@@ -5,6 +5,16 @@
 #ifndef NETWORKING_SERVER_H
 #define NETWORKING_SERVER_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+unsigned long mix(unsigned long a, unsigned long b, unsigned long c);
+void sigchld_handler(int s);
+int main(void);
 
+#ifdef __cplusplus
+}
+#endif
+    
 #endif

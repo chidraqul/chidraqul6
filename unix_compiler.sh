@@ -26,6 +26,7 @@ do
 
     #server
     echo "[SERVER]"
+    clang++ src/server/*.cpp -c
     clang src/server/*.c -c
     clang *.o -o chidraqul6_srv
     mv *.o obj
