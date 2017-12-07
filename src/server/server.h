@@ -9,6 +9,7 @@
 extern "C" {
 #endif
 
+int GetPlayerID(const char * pData);
 void MainDataJuggeling(char * pClientData);
 
 #ifdef __cplusplus

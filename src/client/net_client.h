@@ -7,6 +7,22 @@
 
 #include "player.h"
 
+/*
+Function: PumpNetwork
+Performs an exchange of data with the server and updates the game
+
+Parameters:
+- not 
+- sure 
+- yet
+- lul
+
+Returns:
+- 0 on success
+- everything else on error
+
+*/
+
 int PumpNetwork(CPlayer& player, CPlayer& player2);
 
 #endif

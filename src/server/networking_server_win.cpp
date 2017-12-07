@@ -42,6 +42,7 @@ int main()
 			//std::cout << "Client connected!" << std::endl;
 
 			//RECIVE data
+			memset(aBuf, 0, sizeof(aBuf));
 			recv(client, aBuf, sizeof(aBuf), 0);
 			std::cout << "Client x[" << aBuf << "]" << std::endl;
 

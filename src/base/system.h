@@ -28,6 +28,7 @@ extern "C" {
 	- The strings are treated as zero-termineted strings.
 	- Garantees that dst string will contain zero-termination.
 	*/
+	
 	int str_format(char *buffer, int buffer_size, const char *format, ...); // Proudly stolen from Teeworlds
 
 #ifdef __cplusplus

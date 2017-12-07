@@ -16,6 +16,7 @@ private:
 public:
 	int PlayerTick;
 
+	int ClientID;
 	int AimDir;
 	int PosX;
 	int PosY;
