@@ -15,7 +15,7 @@
 int PumpNetwork(CPlayer& player, CPlayer& player2)
 {
 	char aBuf[PACKAGE_SIZE];
-	str_format(aBuf, PACKAGE_SIZE, "%d_%d", player.ClientID, player.PosX);
+	str_format(aBuf, PACKAGE_SIZE, "%d_%d_", player.ClientID, player.PosX);
 
 	//printf("DATA: %s SIZE: %d", aBuf, sizeof(aBuf));
 

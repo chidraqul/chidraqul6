@@ -42,7 +42,7 @@ void *get_in_addr(struct sockaddr *sa)
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
-int SendPosition(int pos)
+int SendData(const char * pData)
 {
     int sockfd, numbytes;
     char aBuf[MAXDATASIZE];
@@ -88,8 +88,9 @@ int SendPosition(int pos)
     
     freeaddrinfo(servinfo); // all done with this structure
     
-    str_format(aBuf, sizeof(aBuf), "%d", pos);
-    send(sockfd, aBuf, MAXDATASIZE-1,0);
+    //str_format(aBuf, sizeof(aBuf), "%d", pos);
+    //send(sockfd, aBuf, MAXDATASIZE-1,0);
+    send(sockfd, pData, sizeof(pData), 0);
     
     if ((numbytes = recv(sockfd, aBuf, MAXDATASIZE-1, 0)) == -1) {
         perror("recv");
