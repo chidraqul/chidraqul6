@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <string.h>
-//#include <iostream>
+#include <stdlib.h>
 
 #include "../base/system.h"
 
@@ -18,8 +18,7 @@ extern "C" {
 void MainDataJuggeling(char * pClientData)
 {
 	char aBuf[128];
-	//int pos = atoi(pClientData);
-    int pos = 1;
+	int pos = atoi(pClientData);
 	pos++;
 
 

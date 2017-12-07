@@ -10,7 +10,7 @@
 #include <iostream>
 #include <winsock2.h>
 
-int SendPosition(int pos)
+int SendData(const char * pData)
 {
 	WSADATA WSAData;
 	SOCKET server;
@@ -27,9 +27,9 @@ int SendPosition(int pos)
 	//std::cout << "Connected to server!" << std::endl;
 
 	char aBuf[1024];
-	str_format(aBuf, sizeof(aBuf), "%d", pos);
+	//str_format(aBuf, sizeof(aBuf), "%d", pos);
 
-	send(server, aBuf, sizeof(aBuf), 0);
+	send(server, pData, sizeof(pData), 0);
 	//std::cout << "send: " << aBuf << std::endl;
 	//std::cout << "Message sent!" << std::endl;
 

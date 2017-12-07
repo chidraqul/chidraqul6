@@ -31,6 +31,7 @@ gcc src/base/*.c -c
 
 :: server
 echo [SERVER]
+gcc src/server/*.c -c
 g++ src/server/*.cpp -c
 g++ *.o -o chidraqul6_srv -lws2_32
 move *.o objs >NUL

@@ -6,6 +6,6 @@
 #define NETWORKING_CLIENT_WIN_H
 #include "player.h"
 
-int SendPosition(int pos);
+int SendData(const char * pData);
 
 #endif

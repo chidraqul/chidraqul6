@@ -20,7 +20,8 @@ void OnTick()
 { 
     HandleInputs(*pPlayer); //creates LastInpDirX
 	pPlayer->OnTick(); //uses LastInpDirX to keep moving in fall
-	int recv_pos = SendPosition(pPlayer->PosX);
+	//int recv_pos = SendData(pPlayer->PosX);
+	int recv_pos = SendData("3");
 	RenderFrame(*pPlayer, recv_pos);
 	pPlayer2->UpdatePosition(recv_pos,0, ' ');
 #ifdef __APPLE__
