@@ -29,7 +29,7 @@ int DetectOS() //if no compile move me to chidraqul.cpp
     std::cout << "detected os x\n";
     return 2;
 #elif __linux__
-    std::cout << "detected linux\n"
+    std::cout << "detected linux\n";
     return 3;
 #else
     return -1;
