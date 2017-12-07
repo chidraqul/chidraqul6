@@ -4,7 +4,6 @@
 
 #ifndef NETWORKING_CLIENT_WIN_H
 #define NETWORKING_CLIENT_WIN_H
-#include "player.h"
 
 int SendData(const char * pData);
 

@@ -1,17 +1,13 @@
 //chidraqul6 made by ChillerDragon
 //ChillerDragon copyright (c)
-//started development 201
+//started development 2017
 
 #include "chidraqul6.h"
 #include "world.h"
 #include "controls.h"
 #include "render.h"
 
-#ifdef _WIN32
-#include "networking_client_win.h"
-#elif (__APPLE__) || (__linux__)
-#include "networking_client_osx.h"
-#endif
+#include "net_client.h"
 
 CPlayer *pPlayer = new CPlayer;
 CPlayer *pPlayer2 = new CPlayer;
@@ -20,10 +16,7 @@ void OnTick()
 { 
     HandleInputs(*pPlayer); //creates LastInpDirX
 	pPlayer->OnTick(); //uses LastInpDirX to keep moving in fall
-	//int recv_pos = SendData(pPlayer->PosX);
-	int recv_pos = SendData("3");
-	RenderFrame(*pPlayer, recv_pos);
-	pPlayer2->UpdatePosition(recv_pos,0, ' ');
+	PumpNetwork(*pPlayer, *pPlayer2);
 #ifdef __APPLE__
     //system("sleep 0.000000001"); //shit xd
 #endif // __APPLE__
