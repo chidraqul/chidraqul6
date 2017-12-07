@@ -1,15 +1,20 @@
 # chidraqul6
 chidraqul6 the console game in the 6th generation designed to be cross platform and finally multiplayer
 
-# Build
+# Build windows
 
 On windows install MinGW c++ and c compiler and execute ``MinGW_chidraqul6.bat``
 
-On linux and apple get an g++ and gcc compiler and execute ``unix_compiler.sh``
+# Build macOS
 
-dependencies macOS:
-``xcode-select --install``
+Install xcode and execute ``./unix_compiler.sh``
 
-dependencies debian:
-``sudo apt-get install clang``
-``sudo apt-get install libncurses5-dev``
+xcode: ``xcode-select --install``
+
+# Build linux
+
+Install clang and ncurses and then execute ``./unix_compiler.sh``
+
+clang: ``sudo apt-get install clang``
+
+ncurses: ``sudo apt-get install libncurses5-dev``
