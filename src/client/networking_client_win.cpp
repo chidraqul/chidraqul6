@@ -28,10 +28,10 @@ char * SendData(const char * pData)
 
 	char aBuf[1024];
 	//str_format(aBuf, sizeof(aBuf), "%d", pos);
-	printf("[debug] sending=%s\n", pData);
+	//ClearConsole();
 
-	send(server, pData, sizeof(pData), 0);
-	//std::cout << "send: " << aBuf << std::endl;
+	send(server, pData, PACKAGE_SIZE-1, 0);
+	//std::cout << "send: " << pData << std::endl;
 	//std::cout << "Message sent!" << std::endl;
 
 	memset(aBuf, 0, sizeof(aBuf));

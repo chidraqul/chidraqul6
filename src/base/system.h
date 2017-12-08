@@ -13,6 +13,13 @@ extern "C" {
 #endif
 
 	/*
+	Function: ClearConsole
+	Cleans the terminal with system message depending on os
+	*/
+
+	void ClearConsole();
+
+	/*
 	Function: GetDelimiterPos
 	Performs a search for the num delimiter in a buffer.
 

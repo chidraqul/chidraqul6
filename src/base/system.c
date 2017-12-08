@@ -11,6 +11,16 @@
 extern "C" {
 #endif
 
+	void ClearConsole()
+	{
+#ifdef _WIN32
+		system("cls");
+#else
+		system("clean");
+#endif // _WIN32
+
+	}
+
 	int GetDelimiterPos(const char * buffer, char delimiter, int num)
 	{
 		if (num < 1)

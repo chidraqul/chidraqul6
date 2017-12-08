@@ -48,7 +48,7 @@ int main()
 			//RECIVE data
 			//memset(aBuf, 0, sizeof(aBuf));
 			recv(client, aBuf, sizeof(aBuf), 0);
-			printf("[debug] recv=%s\n", aBuf);
+			//printf("[debug] recv=%s\n", aBuf);
 			std::cout << "Client x[" << aBuf << "]" << std::endl;
 
 			//PROCESS data (handelt in server.cpp)

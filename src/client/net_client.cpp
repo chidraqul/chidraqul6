@@ -101,10 +101,11 @@ int PumpNetwork(CPlayer& player, CPlayer& player2)
 
 	player.ClientID = GetServerCID(aRecv);
 	player.PosX = GetServerPosX(aRecv);
-	int p2_pos = GetServerPlayerX(aRecv, 1);
+	int p2_posX = GetServerPlayerX(aRecv, 1);
+	int p2_posY = GetServerPlayerY(aRecv, 1);
 
-	RenderFrame(player2, p2_pos);
-	player2.UpdatePosition(p2_pos, 0, ' ');
+	RenderFrame(player2, p2_posX);
+	player2.UpdatePosition(p2_posX, p2_posY, ' ');
 
 	return 0;
 }
