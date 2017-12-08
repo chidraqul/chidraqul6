@@ -4,7 +4,6 @@
 
 #include "base.h"
 #include "render.h"
-#include "../network/network.h"
 
 #ifdef _WIN32
 #include "networking_client_win.h"
@@ -14,12 +13,16 @@
 
 int PumpNetwork(CPlayer& player, CPlayer& player2)
 {
-	char aBuf[PACKAGE_SIZE];
-	str_format(aBuf, PACKAGE_SIZE, "%d_%d_", player.ClientID, player.PosX);
+	char aSend[PACKAGE_SIZE];
+	char aRecv[PACKAGE_SIZE];
+	str_format(aSend, PACKAGE_SIZE, "%d_%d_", player.ClientID, player.PosX);
 
-	//printf("DATA: %s SIZE: %d", aBuf, sizeof(aBuf));
+	//printf("DATA: %s SIZE: %d", aSend, sizeof(aSend));
 
-	int recv_pos = SendData(aBuf);
+	str_format(aRecv, sizeof(aRecv), "%s", SendData(aSend));
+
+	int recv_pos = atoi(aRecv);
+
 	RenderFrame(player2, recv_pos);
 	player2.UpdatePosition(recv_pos, 0, ' ');
 

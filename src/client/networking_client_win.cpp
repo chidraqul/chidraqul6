@@ -10,7 +10,7 @@
 #include <iostream>
 #include <winsock2.h>
 
-int SendData(const char * pData)
+char * SendData(const char * pData)
 {
 	WSADATA WSAData;
 	SOCKET server;
@@ -43,6 +43,8 @@ int SendData(const char * pData)
 
 	//std::cout << "Socket closed." << std::endl << std::endl;
 
-	return atoi(aBuf);
+	char * pBuf = &aBuf[0];
+
+	return pBuf;
 }
 #endif

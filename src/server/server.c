@@ -10,40 +10,12 @@
 #include <stdlib.h>
 
 #include "../base/system.h"
-#include "../network/network.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
-    int GetDelimiterPos(const char * pData, char delimiter, int num)
-    {
-        if (num < 1)
-        {
-            printf("[error] GetDelimiterPos() num=%d\n", num);
-            return -2;
-        }
-        
-        int found = 0;
-        for (int i = 0; i < PACKAGE_SIZE; i++)
-        {
-            if (pData[i] == '\0')
-            {
-                return -1;
-            }
-            else if (pData[i] == delimiter)
-            {
-                found++;
-                if (found == num)
-                {
-                    return i;
-                }
-            }
-        }
-        
-        printf("[error] GetDelimiterPos() failed delimiter=%c num=%d data=%s\n", delimiter, num, pData);
-        return -3;
-    }
+
+	Player *apPlayers[MAX_CLIENTS];
     
     int GetPlayerPos(const char * pData)
     {
@@ -90,12 +62,52 @@ extern "C" {
     void MainDataJuggeling(char * pClientData)
     {
         char aBuf[PACKAGE_SIZE];
+
+		//identification
+		int id = GetPlayerID(pClientData);
+		if (!apPlayers[id]) //new player --> add it to array
+		{
+			//get next free id
+			id = GetNextClientID();
+			if (id == -1)
+			{
+				printf("[error] player id=%d failed", id);
+				return;
+			}
+
+			apPlayers[id] = malloc(sizeof *apPlayers[id]);
+			apPlayers[id]->PosX = 5;
+			apPlayers[id]->PosY = 0;
+			apPlayers[id]->ClientID = id;
+			printf("[player] added new player with id=%d\n", id);
+		}
+
+
+		//movement
         int pos = GetPlayerPos(pClientData);
         pos++;
         
         
         str_format(pClientData, PACKAGE_SIZE, "%d", pos);
     }
+
+	int GetNextClientID()
+	{
+		for (int i = 0; i < MAX_CLIENTS; i++)
+		{
+			if (!apPlayers[i])
+				return i;
+		}
+		return -1;
+	}
+
+	void InitServer()
+	{
+		for (int i = 0; i < MAX_CLIENTS; i++)
+		{
+			apPlayers[i] = NULL;
+		}
+	}
 
 #ifdef __cplusplus
 }

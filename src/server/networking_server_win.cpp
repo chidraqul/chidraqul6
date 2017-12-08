@@ -29,6 +29,8 @@ int main()
 	bind(server, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
 
 
+	InitServer();
+
 	while (1)
 	{
 		listen(server, 0);

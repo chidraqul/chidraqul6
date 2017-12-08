@@ -8,24 +8,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    /*
-     Function: GetDelimiterPos
-     Performs a search for the num delimiter in a buffer.
-     
-     Parameters:
-     buffer - Pointer to the buffer.
-     delimiter - Delimiter to be found in the buffer.
-     num - Find the num delimiter.
-     
-     Returns:
-     Position of the num found delemiter in the string
-     or -2 on error out of range
-     or -1 on delmiter not found
-     or -3 on super weird error
-     */
-    
-    int GetDelimiterPos(const char * pData, char delimiter, int num);
     
     /*
      Function: GetPlayerPos
@@ -68,6 +50,20 @@ extern "C" {
      */
     
     void MainDataJuggeling(char * pClientData);
+
+	int GetNextClientID();
+
+	void InitServer();
+
+	typedef struct
+	{
+		int ClientID;
+		int NetState; //idk yet what this is probably some check if this player exsist or something
+
+		int PosX;
+		int PosY;
+		int IsAlive;
+	} Player;
 
 #ifdef __cplusplus
 }
