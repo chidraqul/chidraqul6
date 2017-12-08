@@ -165,24 +165,27 @@ int main(void)
             memset(aBuf, 0, sizeof(aBuf));
             recv(new_fd, aBuf, sizeof(aBuf), 0);
             printf("Client [%s]\n", aBuf);
+            printf("[debug] send\n");
             
             //=== PROCESS data ===   (handelt in server.cpp)
             //srand(mix(clock(), time(NULL), getpid())); //new rand needed every tick because fork
             //str_format(aBuf, sizeof(aBuf), "%d", rand() % 3 - 1);
             MainDataJuggeling(aBuf);
+            printf("[debug] survived data juggle\n");
             
             
             //=== SEND ===
             if (send(new_fd, aBuf, sizeof(aBuf), 0) == -1)
             {
-                perror("send");
+                //perror("send");
+                printf("WTFTWTFTWFTWFT\n");
             }
             else
             {
                 printf("Server [%s]\n", aBuf);
             }
             
-            
+            printf("[debug] survived sent\n");
             
             close(new_fd);
             exit(0);

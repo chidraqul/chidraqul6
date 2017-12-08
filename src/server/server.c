@@ -61,6 +61,7 @@ extern "C" {
     
     void MainDataJuggeling(char * pClientData)
     {
+        printf("[debug] init data juggle");
         char aBuf[PACKAGE_SIZE];
 
 		//identification
@@ -82,6 +83,7 @@ extern "C" {
 			printf("[player] added new player with id=%d\n", id);
 		}
 
+        printf("[debug] movement");
 
 		//movement
         int pos = GetPlayerPos(pClientData);
@@ -98,6 +100,7 @@ extern "C" {
 			}
 		}
         
+        printf("[debug] done data juggle in fun");
         
         str_format(pClientData, PACKAGE_SIZE, "%d_%d_%d_", id, pos, pos2);
     }
