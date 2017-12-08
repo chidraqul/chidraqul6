@@ -234,7 +234,7 @@ void CPlayer::OnTick()
 CPlayer::CPlayer() //Constructor
 {
 	ClientID = -1;
-	PosX = 5;
+	PosX = 0;
 	PosY = 0;
     Skin = 'x';
 	IsAlive = false;

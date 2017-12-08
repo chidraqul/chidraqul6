@@ -17,7 +17,7 @@ extern "C" {
 
 	Player *apPlayers[MAX_CLIENTS];
     
-    int GetPlayerPos(const char * pData)
+    int GetPlayerPosX(const char * pData)
     {
         char aPos[PACKAGE_SIZE];
         int str_start = GetDelimiterPos(pData, DATA_DELIMITER, 1) + 1;
@@ -38,6 +38,28 @@ extern "C" {
         
         return atoi(aPos);
     }
+
+	int GetPlayerPosY(const char * pData)
+	{
+		char aPos[PACKAGE_SIZE];
+		int str_start = GetDelimiterPos(pData, DATA_DELIMITER, 2) + 1;
+		int str_end = GetDelimiterPos(pData, DATA_DELIMITER, 3);
+		int index = 0;
+
+		if (str_start < 0 || str_end < 0)
+		{
+			printf("[error] recived bad data s=%d e=%d data=%s\n", str_start, str_end, pData);
+		}
+
+		for (int i = str_start; i < str_end; i++)
+		{
+			aPos[index] = pData[i];
+			index++;
+		}
+		aPos[index] = '\0';
+
+		return atoi(aPos);
+	}
 
     int GetPlayerID(const char * pData)
     {
@@ -61,7 +83,6 @@ extern "C" {
     
     void MainDataJuggeling(char * pClientData)
     {
-        printf("[debug] init data juggle");
         char aBuf[PACKAGE_SIZE];
 
 		//identification
@@ -83,26 +104,28 @@ extern "C" {
 			printf("[player] added new player with id=%d\n", id);
 		}
 
-        printf("[debug] movement");
 
 		//movement
-        int pos = GetPlayerPos(pClientData);
-		apPlayers[id]->PosX = pos;
+        int posX = GetPlayerPosX(pClientData);
+		int posY = GetPlayerPosY(pClientData);
+		apPlayers[id]->PosX = posX;
+		apPlayers[id]->PosY = posY;
 
 		//send other players pos
-		int pos2 = -1;
+		int pos2X = -1;
+		int pos2Y = -1;
 		for (int i = 0; i < MAX_CLIENTS; i++)
 		{
 			if (apPlayers[i] && apPlayers[i]->ClientID != id)
 			{
-				pos2 = apPlayers[i]->PosX;
+				pos2X = apPlayers[i]->PosX;
+				pos2Y = apPlayers[i]->PosY;
 				break;
 			}
 		}
         
-        printf("[debug] done data juggle in fun");
         
-        str_format(pClientData, PACKAGE_SIZE, "%d_%d_%d_", id, pos, pos2);
+        str_format(pClientData, PACKAGE_SIZE, "%d_%d_%d_%d_%d_", id, posX, posY, pos2X, pos2Y);
     }
 
 	int GetNextClientID()

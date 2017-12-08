@@ -10,7 +10,7 @@ extern "C" {
 #endif
     
     /*
-     Function: GetPlayerPos
+     Function: GetPlayerPosX
      Feteches the player position out of client buffers.
      
      Parameters:
@@ -20,8 +20,21 @@ extern "C" {
      The X position of the player as an integer
      */
     
-    int GetPlayerPos(const char * pData);
+    int GetPlayerPosX(const char * pData);
     
+	/*
+	Function: GetPlayerPosY
+	Feteches the player position out of client buffers.
+
+	Parameters:
+	buffer - Pointer to the client data buffer.
+
+	Returns:
+	The Y position of the player as an integer
+	*/
+
+	int GetPlayerPosY(const char * pData);
+
     /*
      Function: GetPlayerID
      Feteches the player ClientID out of client buffers.

@@ -28,6 +28,7 @@ char * SendData(const char * pData)
 
 	char aBuf[1024];
 	//str_format(aBuf, sizeof(aBuf), "%d", pos);
+	printf("[debug] sending=%s\n", pData);
 
 	send(server, pData, sizeof(pData), 0);
 	//std::cout << "send: " << aBuf << std::endl;

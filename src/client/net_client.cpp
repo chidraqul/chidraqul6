@@ -34,11 +34,11 @@ int GetServerPosX(const char * pData)
 	return atoi(aPos);
 }
 
-int GetServerOtherPosX(const char * pData, int player_num)
+int GetServerData(const char * pData, int data_index)
 {
 	char aPos[PACKAGE_SIZE];
-	int str_start = GetDelimiterPos(pData, DATA_DELIMITER, player_num + 1) + 1;
-	int str_end = GetDelimiterPos(pData, DATA_DELIMITER, player_num + 2);
+	int str_start = GetDelimiterPos(pData, DATA_DELIMITER, data_index + 1) + 1;
+	int str_end = GetDelimiterPos(pData, DATA_DELIMITER, data_index + 2);
 	int index = 0;
 
 	if (str_start < 0 || str_end < 0)
@@ -54,6 +54,21 @@ int GetServerOtherPosX(const char * pData, int player_num)
 	aPos[index] = '\0';
 
 	return atoi(aPos);
+}
+
+int GetServerPosY(const char * pData)
+{
+	return GetServerData(pData, 1);
+}
+
+int GetServerPlayerX(const char * pData, int player)
+{
+	return GetServerData(pData, player * 2);
+}
+
+int GetServerPlayerY(const char * pData, int player)
+{
+	return GetServerData(pData, player * 2 + 1);
 }
 
 int GetServerCID(const char * pData)
@@ -78,7 +93,7 @@ int PumpNetwork(CPlayer& player, CPlayer& player2)
 {
 	char aSend[PACKAGE_SIZE];
 	char aRecv[PACKAGE_SIZE];
-	str_format(aSend, PACKAGE_SIZE, "%d_%d____", player.ClientID, player.PosX);
+	str_format(aSend, sizeof(aSend), "%d_%d_%d_", player.ClientID, player.PosX, player.PosY);
 
 	//printf("DATA: %s SIZE: %d", aSend, sizeof(aSend));
 
@@ -86,7 +101,7 @@ int PumpNetwork(CPlayer& player, CPlayer& player2)
 
 	player.ClientID = GetServerCID(aRecv);
 	player.PosX = GetServerPosX(aRecv);
-	int p2_pos = GetServerOtherPosX(aRecv, 1);
+	int p2_pos = GetServerPlayerX(aRecv, 1);
 
 	RenderFrame(player2, p2_pos);
 	player2.UpdatePosition(p2_pos, 0, ' ');

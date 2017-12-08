@@ -52,17 +52,64 @@ The pos x of the player as an integer
 int GetServerPosX(const char * pData);
 
 /*
-Function: GetServerOtherPosX
-Feteches the pos x of an specific players on the server out of the server buffer.
+Function: GetServerPosY
+Feteches the client pos y out of the server buffer.
 
 Parameters:
 buffer - Pointer to the server data buffer.
-player_num - Which player should be requested
 
 Returns:
-The pos x of the player player_num as an integer
+The pos y of the player as an integer
 */
 
-int GetServerOtherPosX(const char * pData, int player_num); //TODO: use this also for own pos and remove GetServerPosX() func
+int GetServerPosY(const char * pData);
+
+/*
+Function: GetServerPlayerX
+Feteches the client pos x out of the server buffer.
+
+Parameters:
+buffer - Pointer to the server data buffer.
+player - Which player should be fetched;.
+
+Returns:
+The pos x of the player as an integer
+*/
+
+int GetServerPlayerX(const char * pData, int player);
+
+/*
+Function: GetServerPlayerY
+Feteches the client pos y out of the server buffer.
+
+Parameters:
+buffer - Pointer to the server data buffer.
+player - Which player should be fetched;.
+
+Returns:
+The pos y of the player as an integer
+*/
+
+int GetServerPlayerY(const char * pData, int player);
+
+/*
+Function: GetServerData
+Feteches the data at data_index out of the server buffer.
+
+Parameters:
+buffer - Pointer to the server data buffer.
+data_index - Which index in the server buffer should be fetched
+
+Index:
+- 0 Own posX
+- 1 Own posY
+- 2 Other posX
+- 3 Other posY
+
+Returns:
+The data_index element of the data buffer recvied from the server
+*/
+
+int GetServerData(const char * pData, int data_index);
 
 #endif
