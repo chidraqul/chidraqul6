@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-int SendData(const char * pData);
+char * SendData(const char * pData);
 
 #ifdef __cplusplus
 }

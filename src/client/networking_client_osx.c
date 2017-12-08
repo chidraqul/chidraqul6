@@ -42,7 +42,7 @@ void *get_in_addr(struct sockaddr *sa)
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
-int SendData(const char * pData)
+char * SendData(const char * pData)
 {
     int sockfd, numbytes;
     char aBuf[MAXDATASIZE];
@@ -57,7 +57,7 @@ int SendData(const char * pData)
     
     if ((rv = getaddrinfo("127.0.0.1", PORT, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-        return -1;
+        return "error";
     }
     
     // loop through all the results and connect to the first we can
@@ -79,7 +79,7 @@ int SendData(const char * pData)
     
     if (p == NULL) {
         fprintf(stderr, "client: failed to connect\n");
-        return -2;
+        return "error";
     }
     
     inet_ntop(p->ai_family, get_in_addr((struct sockaddr *)p->ai_addr),
@@ -100,11 +100,12 @@ int SendData(const char * pData)
     aBuf[numbytes] = '\0';
     
     //printf("client: received '%s'\n",aBuf);
-    int recv_pos = atoi(aBuf);
+    //int recv_pos = atoi(aBuf);
+    char * pBuf = &aBuf[0];
     
     close(sockfd);
     
-    return recv_pos;
+    return pBuf;
 }
 
 
