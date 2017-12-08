@@ -233,7 +233,7 @@ void CPlayer::OnTick()
 
 CPlayer::CPlayer() //Constructor
 {
-	ClientID = 1;
+	ClientID = -1;
 	PosX = 5;
 	PosY = 0;
     Skin = 'x';

@@ -6,6 +6,8 @@
 
 #include "networking_server_win.h"
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <winsock2.h>
 #include "../base/system.h"
@@ -37,15 +39,16 @@ int main()
 
 		//std::cout << "Listening for incoming connections..." << std::endl;
 
-		char aBuf[1024];
+		char aBuf[PACKAGE_SIZE];
 		int clientAddrSize = sizeof(clientAddr);
 		if ((client = accept(server, (SOCKADDR *)&clientAddr, &clientAddrSize)) != INVALID_SOCKET)
 		{
 			//std::cout << "Client connected!" << std::endl;
 
 			//RECIVE data
-			memset(aBuf, 0, sizeof(aBuf));
+			//memset(aBuf, 0, sizeof(aBuf));
 			recv(client, aBuf, sizeof(aBuf), 0);
+			printf("[debug] recv=%s\n", aBuf);
 			std::cout << "Client x[" << aBuf << "]" << std::endl;
 
 			//PROCESS data (handelt in server.cpp)

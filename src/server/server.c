@@ -65,7 +65,7 @@ extern "C" {
 
 		//identification
 		int id = GetPlayerID(pClientData);
-		if (!apPlayers[id]) //new player --> add it to array
+		if (id == -1) //client requests id
 		{
 			//get next free id
 			id = GetNextClientID();
@@ -85,10 +85,21 @@ extern "C" {
 
 		//movement
         int pos = GetPlayerPos(pClientData);
-        pos++;
+		apPlayers[id]->PosX = pos;
+
+		//send other players pos
+		int pos2 = -1;
+		for (int i = 0; i < MAX_CLIENTS; i++)
+		{
+			if (apPlayers[i] && apPlayers[i]->ClientID != id)
+			{
+				pos2 = apPlayers[i]->PosX;
+				break;
+			}
+		}
         
         
-        str_format(pClientData, PACKAGE_SIZE, "%d", pos);
+        str_format(pClientData, PACKAGE_SIZE, "%d_%d_%d_", id, pos, pos2);
     }
 
 	int GetNextClientID()

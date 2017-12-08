@@ -23,7 +23,7 @@ extern "C" {
     int GetPlayerPos(const char * pData);
     
     /*
-     Function: GetPlayerClientID
+     Function: GetPlayerID
      Feteches the player ClientID out of client buffers.
      
      Parameters:
