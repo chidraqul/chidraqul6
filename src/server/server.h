@@ -10,7 +10,7 @@ extern "C" {
 #endif
     
     /*
-     Funtion: Test
+     Function: Test
      Prints test failed on success
      */
     

@@ -17,7 +17,9 @@ void ChillClearScreen()
 {
 #ifdef _WIN32
 	system("cls");
-#endif // _WIN32
+#else
+    system("clear");
+#endif
 }
 
 int DetectOS() //if no compile move me to chidraqul.cpp
@@ -35,6 +37,70 @@ int DetectOS() //if no compile move me to chidraqul.cpp
     return -1;
     std::cout << "unsupported oss\n";
 #endif
+}
+
+int GotoChidraqulFolder()
+{
+#ifdef _WIN32
+    if (chdir("%APPDATA%"))
+    {
+        printf("[client] failed to set working directory\n");
+        return -1
+    }
+    system("if not exist \"chidraqul\\\" mkdir chidraqul\\");
+    if (chdir("chidraqul"))
+    {
+        printf("[client] failed to enter chidraqul directory\n");
+        return -1;
+    }
+    system("if not exist \"chidraqul6\\\" mkdir chidraqul6\\");
+    if (chdir("chidraqul6"))
+    {
+        printf("[client] failed to enter chidraqul6 directory\n");
+        return -1;
+    }
+#elif __APPLE__
+    chdir(getenv("HOME"));
+    if (chdir("Library/Application Support/"))
+    {
+        printf("[client] failed to set working directory\n");
+        return -1;
+    }
+    system("mkdir -p chidraqul");
+    if (chdir("chidraqul/"))
+    {
+        printf("[client] failed to enter chidraqul directory\n");
+        return -1;
+    }
+    system("mkdir -p chidraqul6");
+    if (chdir("chidraqul6/"))
+    {
+        printf("[client] failed to enter chidraqul6 directory\n");
+        return -1;
+    }
+#elif __linux__
+    if (chdir(getenv("HOME"));)
+    {
+        printf("[client] failed to set working directory\n");
+        return -1;
+    }
+    system("mkdir -p chidraqul");
+    if (chdir("chidraqul/"))
+    {
+        printf("[client] failed to enter chidraqul directory\n");
+        return -1;
+    }
+    system("mkdir -p chidraqul6");
+    if (chdir("chidraqul6/"))
+    {
+        printf("[client] failed to enter chidraqul6 directory\n");
+        return -1;
+    }
+#else
+    printf("[client] error OS not supported");
+    return -1;
+#endif
+    return 0;
 }
 
 #ifdef __APPLE__

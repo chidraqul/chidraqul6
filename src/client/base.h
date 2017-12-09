@@ -23,13 +23,56 @@
 
 #include "../base/system.h"
 
+
+/*
+ Function: kbhit
+ Performs a keypress check
+ 
+ Returns:
+ Keycode as integer
+ */
+
 #ifdef __APPLE__
 int kbhit(void);
+#endif
+
+/*
+ Function: KeyPrinter
+ Produces a debuging output for keypresses
+ */
+
+#ifdef __APPLE__
 void KeyPrinter();
 #endif
 
+/*
+ Function: PauseGame
+ Performs a pause consol command with os depended commands
+ The programm stops until a key gets pressed
+ */
+
 void PauseGame();
+
+/*
+ Function: ChillClearScreen
+ Performs a clear consol command with os depended commands
+ */
+
 void ChillClearScreen();
+
+/*
+ Function: DetectOS
+ Performs a operating system check
+ */
+
 int DetectOS();
+
+/*
+ Function: GotoChidraqulFolder
+ Performs a system call to navigate into chidraqul folder
+ if no folder found --> create one
+ */
+
+int GotoChidraqulFolder();
 
 #endif //BASE_H

@@ -7,6 +7,7 @@
 
 #ifdef _WIN32
 #include "networking_client_win.h"
+#include "net_client.h"
 #elif (__APPLE__) || (__linux__)
 #include "networking_client_osx.h"
 #include "net_client.h"

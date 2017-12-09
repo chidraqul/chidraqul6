@@ -6,6 +6,7 @@
 #include "world.h"
 #include "controls.h"
 #include "render.h"
+#include "client.h"
 
 #include "net_client.h"
 
@@ -24,6 +25,10 @@ void OnTick()
 
 int main()
 {
+    InitClient();
+    printf("[client] press any key to start the game.\n");
+    PauseGame();
+    ChillClearScreen();
     std::cout << "==================" << std::endl;
     std::cout << "   chidraqul6     " << std::endl;
     std::cout << " by ChillerDragon " << std::endl;
