@@ -16,7 +16,7 @@ do
     #client
     echo "[CLIENT]"
     clang src/client/*.c -c
-    clang++ src/client/*.cpp -c
+    clang++ src/client/*.cpp -c -std=c++11
     clang++ *.o -lcurses -o chidraqul6
     mv *.o obj
 
