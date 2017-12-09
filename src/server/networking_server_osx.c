@@ -157,8 +157,8 @@ int main(void)
                   s, sizeof s);
         //printf("server: got connection from %s\n", s);
         
-        if (!fork()) { // this is the child process
-            close(sockfd); // child doesn't need the listener
+        //if (!fork()) { // this is the child process
+            //close(sockfd); // child doesn't need the listener
             
             
             //=== RECIVE ===
@@ -187,9 +187,9 @@ int main(void)
             }
             
             close(new_fd);
-            exit(0);
-        }
-        close(new_fd);  // parent doesn't need this
+            //exit(0);
+        //}
+        //close(new_fd);  // parent doesn't need this
     }
     
     return 0;
