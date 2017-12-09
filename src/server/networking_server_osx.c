@@ -35,6 +35,8 @@ extern "C" {
 
 #define BACKLOG 10     // how many pending connections queue will hold
 
+int ServerTick = 0; //TODO: remove this because it is only for debugging
+    
 unsigned long mix(unsigned long a, unsigned long b, unsigned long c)
 {
     a=a-b;  a=a-c;  a=a^(c >> 13);
@@ -141,6 +143,11 @@ int main(void)
     
     while(1) {  // main accept() loop
         //sleep(1); //be nice c:
+        printf("tick=%d\n", ServerTick++);
+        //server runs fine till:
+        //Tick=~16k -> it gets stuck for 20 seconds and then runs agian
+        //Tick=~32k -> gets stucked same way and then runs agian
+        //Tick=~49k -> i guess u get it ...
         
         
         sin_size = sizeof their_addr;
