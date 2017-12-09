@@ -42,7 +42,7 @@ void *get_in_addr(struct sockaddr *sa)
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
-char * SendData(const char * pData)
+char * SendData(const char * pData, ClientSettings * pSettings)
 {
     int sockfd, numbytes;
     char aBuf[MAXDATASIZE];
@@ -55,7 +55,7 @@ char * SendData(const char * pData)
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
     
-    if ((rv = getaddrinfo("127.0.0.1", PORT, &hints, &servinfo)) != 0) {
+    if ((rv = getaddrinfo(pSettings->aServerIP, pSettings->aServerPort, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
         return "error";
     }

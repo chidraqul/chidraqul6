@@ -39,7 +39,10 @@ int LoadSettings(char * filename, ClientSettings * pSettings)
     else
         return -1;
     if (std::getline(file, data))
+    {
         printf("[client] port=%s\n", data.c_str());
+        str_format(pSettings->aServerPort, sizeof(pSettings->aServerPort), "%s", data.c_str());
+    }
     else
         return -1;
     if (std::getline(file, data))

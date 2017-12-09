@@ -21,7 +21,7 @@ Saves all the global config values
 typedef struct
 {
 	char aServerIP[32];
-	int ServerPort;
+    char aServerPort[16];
 	char aUsername[32];
 } ClientSettings;
 
