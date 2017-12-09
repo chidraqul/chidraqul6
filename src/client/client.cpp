@@ -42,6 +42,7 @@ int LoadSettings(char * filename, ClientSettings * pSettings)
     {
         printf("[client] port=%s\n", data.c_str());
         str_format(pSettings->aServerPort, sizeof(pSettings->aServerPort), "%s", data.c_str());
+		pSettings->ServerPort = atoi(pSettings->aServerPort);
     }
     else
         return -1;

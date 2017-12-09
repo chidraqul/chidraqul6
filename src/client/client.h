@@ -22,6 +22,7 @@ typedef struct
 {
 	char aServerIP[32];
     char aServerPort[16];
+	int ServerPort;
 	char aUsername[32];
 } ClientSettings;
 
