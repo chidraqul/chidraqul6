@@ -10,7 +10,7 @@
 #include <iostream>
 #include <winsock2.h>
 
-char * SendData(const char * pData)
+char * SendData(const char * pData, ClientSettings * pSettings)
 {
 	WSADATA WSAData;
 	SOCKET server;
@@ -19,9 +19,9 @@ char * SendData(const char * pData)
 	WSAStartup(MAKEWORD(2, 0), &WSAData);
 	server = socket(AF_INET, SOCK_STREAM, 0);
 
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	addr.sin_addr.s_addr = inet_addr(pSettings->aServerIP);
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(5555);
+	addr.sin_port = htons(pSettings->ServerPort);
 
 	connect(server, (SOCKADDR *)&addr, sizeof(addr));
 	//std::cout << "Connected to server!" << std::endl;

@@ -5,9 +5,10 @@
 #ifndef CHIDRAQUL6_H
 #define CHIDRAQUL6_H
 #include "player.h"
+#include "client.h"
 
 
-void OnTick();
+void OnTick(ClientSettings * pSettings);
 int main();
 
 

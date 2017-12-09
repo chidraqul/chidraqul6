@@ -90,7 +90,7 @@ int GetServerCID(const char * pData)
 	return atoi(aPlayerID);
 }
 
-int PumpNetwork(CPlayer& player, CPlayer& player2)
+int PumpNetwork(CPlayer& player, CPlayer& player2, ClientSettings * pSettings)
 {
 	char aSend[PACKAGE_SIZE];
 	char aRecv[PACKAGE_SIZE];
@@ -98,7 +98,7 @@ int PumpNetwork(CPlayer& player, CPlayer& player2)
 
 	//printf("DATA: %s SIZE: %d", aSend, sizeof(aSend));
 
-	str_format(aRecv, sizeof(aRecv), "%s", SendData(aSend));
+	str_format(aRecv, sizeof(aRecv), "%s", SendData(aSend, pSettings));
 
 	player.ClientID = GetServerCID(aRecv);
 	player.PosX = GetServerPosX(aRecv);

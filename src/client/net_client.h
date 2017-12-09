@@ -23,7 +23,7 @@ Returns:
 
 */
 
-int PumpNetwork(CPlayer& player, CPlayer& player2);
+int PumpNetwork(CPlayer& player, CPlayer& player2, ClientSettings * pSettings);
 
 /*
 Function: GetServerCID

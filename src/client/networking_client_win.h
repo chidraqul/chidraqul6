@@ -5,6 +5,8 @@
 #ifndef NETWORKING_CLIENT_WIN_H
 #define NETWORKING_CLIENT_WIN_H
 
-char * SendData(const char * pData);
+#include "client.h"
+
+char * SendData(const char * pData, ClientSettings * pSettings);
 
 #endif

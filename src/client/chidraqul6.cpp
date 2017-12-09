@@ -13,11 +13,11 @@
 CPlayer *pPlayer = new CPlayer;
 CPlayer *pPlayer2 = new CPlayer;
 
-void OnTick()
+void OnTick(ClientSettings * pSettings)
 { 
     HandleInputs(*pPlayer); //creates LastInpDirX
 	pPlayer->OnTick(); //uses LastInpDirX to keep moving in fall
-	PumpNetwork(*pPlayer, *pPlayer2);
+	PumpNetwork(*pPlayer, *pPlayer2, pSettings);
 #ifdef __APPLE__
     //system("sleep 0.000000001"); //shit xd
 #endif // __APPLE__
@@ -25,7 +25,9 @@ void OnTick()
 
 int main()
 {
-    InitClient();
+	ClientSettings client_settings;
+
+    InitClient(&client_settings);
     printf("[client] press any key to start the game.\n");
     PauseGame();
     ChillClearScreen();
@@ -48,6 +50,6 @@ int main()
 
     while (true)
     {
-		OnTick();
+		OnTick(&client_settings);
     }
 }

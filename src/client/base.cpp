@@ -4,6 +4,11 @@
 
 #include "base.h"
 
+#ifdef _WIN32
+#include <direct.h>
+#endif // _WIN32
+
+
 void PauseGame()
 {
 #ifdef _WIN32
@@ -42,19 +47,20 @@ int DetectOS() //if no compile move me to chidraqul.cpp
 int GotoChidraqulFolder()
 {
 #ifdef _WIN32
-    if (chdir("%APPDATA%"))
+	char* appdata = getenv("APPDATA");
+    if (_chdir(appdata))
     {
         printf("[client] failed to set working directory\n");
-        return -1
+		return -1;
     }
     system("if not exist \"chidraqul\\\" mkdir chidraqul\\");
-    if (chdir("chidraqul"))
+    if (_chdir("chidraqul"))
     {
         printf("[client] failed to enter chidraqul directory\n");
         return -1;
     }
     system("if not exist \"chidraqul6\\\" mkdir chidraqul6\\");
-    if (chdir("chidraqul6"))
+    if (_chdir("chidraqul6"))
     {
         printf("[client] failed to enter chidraqul6 directory\n");
         return -1;

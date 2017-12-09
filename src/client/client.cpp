@@ -26,13 +26,16 @@ int CreateSettings(char * filename)
     return -1; //error
 }
 
-int LoadSettings(char * filename)
+int LoadSettings(char * filename, ClientSettings * pSettings)
 {
     std::ifstream file(filename);
     std::string data;
     
-    if (std::getline(file, data))
-        printf("[client] server=%s\n", data.c_str());
+	if (std::getline(file, data))
+	{
+		printf("[client] server=%s\n", data.c_str());
+		str_format(pSettings->aServerIP, sizeof(pSettings->aServerIP), "%s", data.c_str());
+	}
     else
         return -1;
     if (std::getline(file, data))
@@ -51,7 +54,7 @@ int LoadSettings(char * filename)
     return 0;
 }
 
-int InitClient()
+int InitClient(ClientSettings * pSettings)
 {
     char aSettingsFile[128] = "config.cfg";
     
@@ -65,10 +68,12 @@ int InitClient()
     else
     {
         printf("[client] loading settings...\n");
-        if (LoadSettings(aSettingsFile))
+        if (LoadSettings(aSettingsFile, pSettings))
         {
             printf("[client] could't load settings path '%s'\n", aSettingsFile);
+#if defined(CONF_FAMILY_UNIX)
             system("pwd");
+#endif
             printf("[client] creating new fresh settings...\n");
             CreateSettings(aSettingsFile);
         }
