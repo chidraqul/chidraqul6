@@ -10,6 +10,13 @@ extern "C" {
 #endif
     
     /*
+     Funtion: Test
+     Prints test failed on success
+     */
+    
+    void Test();
+    
+    /*
      Function: GetPlayerPosX
      Feteches the player position out of client buffers.
      

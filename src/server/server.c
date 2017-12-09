@@ -17,6 +17,11 @@ extern "C" {
 
 	Player *apPlayers[MAX_CLIENTS];
     
+    void Test()
+    {
+        printf("[test] test failed\n");
+    }
+    
     int GetPlayerPosX(const char * pData)
     {
         char aPos[PACKAGE_SIZE];
@@ -83,10 +88,18 @@ extern "C" {
     
     void MainDataJuggeling(char * pClientData)
     {
+        //printf("[debug] init main data juggle\n");
         char aBuf[PACKAGE_SIZE];
 
+        
 		//identification
-		int id = GetPlayerID(pClientData);
+        int id = -2;
+		id = GetPlayerID(pClientData);
+        if (id < -1)
+        {
+            printf("[error] id failed id=%d\n", id);
+            return;
+        }
 		if (id == -1) //client requests id
 		{
 			//get next free id
@@ -103,13 +116,21 @@ extern "C" {
 			apPlayers[id]->ClientID = id;
 			printf("[player] added new player with id=%d\n", id);
 		}
+        if (!apPlayers[id])
+        {
+            printf("[error] clientid=%d not vaild\n", id);
+            return; //TODO: handle this error
+        }
 
 
 		//movement
         int posX = GetPlayerPosX(pClientData);
 		int posY = GetPlayerPosY(pClientData);
-		apPlayers[id]->PosX = posX;
-		apPlayers[id]->PosY = posY;
+        
+        apPlayers[id]->PosX = posX;
+        apPlayers[id]->PosY = posY;
+        
+        
 
 		//send other players pos
 		int pos2X = -1;
@@ -123,9 +144,9 @@ extern "C" {
 				break;
 			}
 		}
+         
+        str_format(pClientData, PACKAGE_SIZE-1, "%d_%d_%d_%d_%d_", id, posX, posY, pos2X, pos2Y);
         
-        
-        str_format(pClientData, PACKAGE_SIZE, "%d_%d_%d_%d_%d_", id, posX, posY, pos2X, pos2Y);
     }
 
 	int GetNextClientID()
