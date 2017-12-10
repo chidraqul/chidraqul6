@@ -26,7 +26,7 @@ int main()
 
 	serverAddr.sin_addr.s_addr = INADDR_ANY;
 	serverAddr.sin_family = AF_INET;
-	serverAddr.sin_port = htons(5555);
+	serverAddr.sin_port = htons(4200);
 
 	bind(server, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
 
