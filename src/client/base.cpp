@@ -19,6 +19,13 @@ void PauseGame()
 #endif
 */
 	getchar();
+	//char useless;
+	//scanf("%c", &useless);
+	/*
+	cbreak();
+	getchar();
+	nocbreak();
+	*/
 }
 
 void ChillClearScreen()
