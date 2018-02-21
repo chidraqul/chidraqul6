@@ -94,8 +94,8 @@ int GotoChidraqulFolder()
         return -1;
     }
     //system("mkdir -p chidraqul;echo \"[client] successfully created chidraqul6 directory\";pwd");
-    system("mkdir -p chidraqul");
-    if (chdir("chidraqul/"))
+    system("mkdir -p .chidraqul");
+    if (chdir(".chidraqul/"))
     {
         printf("[client] failed to enter chidraqul directory\n");
         return -1;
