@@ -85,7 +85,7 @@ int GotoChidraqulFolder()
         return -1;
     }
 #elif __linux__
-    if (chdir(getenv("HOME"));)
+    if (chdir(getenv("HOME")))
     {
         printf("[client] failed to set working directory\n");
         return -1;

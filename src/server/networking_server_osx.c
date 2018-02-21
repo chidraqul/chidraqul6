@@ -139,7 +139,7 @@ int main(void)
         exit(1);
     }
     
-    printf("server: waiting for connections...\n");
+    printf("server: waiting for connections on port %s ...\n", PORT);
     
     while(1) {  // main accept() loop
         //sleep(1); //be nice c:
