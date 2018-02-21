@@ -3,7 +3,7 @@ mkdir -p obj
 while :
 do
     clear
-    echo "compiling chidraqul6 (using clan++ & clang with ncurses)"
+    echo "compiling chidraqul6 (using clang++ & clang with ncurses)"
     echo "========================================="
 
     #old unused
