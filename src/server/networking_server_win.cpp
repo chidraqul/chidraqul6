@@ -15,6 +15,8 @@
 
 int main()
 {
+	int port = 4200;
+
 	WSADATA WSAData;
 
 	SOCKET server, client;
@@ -26,12 +28,14 @@ int main()
 
 	serverAddr.sin_addr.s_addr = INADDR_ANY;
 	serverAddr.sin_family = AF_INET;
-	serverAddr.sin_port = htons(4200);
+	serverAddr.sin_port = htons(port);
 
 	bind(server, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
 
 
 	InitServer();
+
+	std::cout << "[server] started and listening on port " << port << std::endl;
 
 	while (1)
 	{
