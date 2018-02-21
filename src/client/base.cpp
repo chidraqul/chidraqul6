@@ -11,11 +11,14 @@
 
 void PauseGame()
 {
+/*
 #ifdef _WIN32
 	system("pause >NUL");
 #elif (__linux__) || (__APPLE__)
 	system("read -n1");
 #endif
+*/
+	getchar();
 }
 
 void ChillClearScreen()
@@ -102,8 +105,10 @@ int GotoChidraqulFolder()
         printf("[client] failed to enter chidraqul6 directory\n");
         return -1;
     }
+    printf("[client]  successfully created chidraqul6 directory at: \n");
+    system("pwd");
 #else
-    printf("[client] error OS not supported");
+    printf("[client] error OS not supported\n");
     return -1;
 #endif
     return 0;
