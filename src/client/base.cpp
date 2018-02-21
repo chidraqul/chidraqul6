@@ -26,6 +26,15 @@ void PauseGame()
 	getchar();
 	nocbreak();
 	*/
+
+/*
+	initscr();
+    noecho();
+    cbreak();
+    getch();
+    nocbreak();
+    echo();
+*/
 }
 
 void ChillClearScreen()
