@@ -20,7 +20,7 @@ void HandleInputs(CPlayer& player)
     //LastInpDirX = 0;
     //LastInpDirY = 0;
     
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(__linux__)
     key = getch();
 #endif // __APPLE__
 #ifdef _WIN32

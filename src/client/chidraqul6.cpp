@@ -40,7 +40,7 @@ int main()
     
     
 	InitWorld();
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(__linux__)
 	initscr();
     system("stty -icanon time 0 min 0");
 #endif // __APPLE__

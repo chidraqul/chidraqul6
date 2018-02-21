@@ -109,7 +109,7 @@ int GotoChidraqulFolder()
     return 0;
 }
 
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(__linux__)
 int kbhit(void)
 {
     struct termios oldt, newt;
