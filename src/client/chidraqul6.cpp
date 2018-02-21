@@ -28,7 +28,7 @@ int main()
 	ClientSettings client_settings;
 
     InitClient(&client_settings);
-    printf("[client] press any key to start the game.\n");
+    printf("[client] press ENTER to start the game.\n");
     PauseGame();
     ChillClearScreen();
     std::cout << "==================" << std::endl;

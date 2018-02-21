@@ -42,8 +42,8 @@ int DetectOS() //if no compile move me to chidraqul.cpp
     std::cout << "detected linux\n";
     return 3;
 #else
-    return -1;
     std::cout << "unsupported oss\n";
+    return -1;
 #endif
 }
 
@@ -93,6 +93,7 @@ int GotoChidraqulFolder()
         printf("[client] failed to set working directory\n");
         return -1;
     }
+    //system("mkdir -p chidraqul;echo \"[client] successfully created chidraqul6 directory\";pwd");
     system("mkdir -p chidraqul");
     if (chdir("chidraqul/"))
     {
@@ -105,8 +106,6 @@ int GotoChidraqulFolder()
         printf("[client] failed to enter chidraqul6 directory\n");
         return -1;
     }
-    printf("[client]  successfully created chidraqul6 directory at: \n");
-    system("pwd");
 #else
     printf("[client] error OS not supported\n");
     return -1;
