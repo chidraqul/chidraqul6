@@ -67,12 +67,4 @@ void ChillClearScreen();
 
 int DetectOS();
 
-/*
- Function: GotoChidraqulFolder
- Performs a system call to navigate into chidraqul folder
- if no folder found --> create one
- */
-
-int GotoChidraqulFolder();
-
 #endif //BASE_H

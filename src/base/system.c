@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include "stdlib.h"
 #include "stdio.h"
+#include <direct.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,6 +20,72 @@ extern "C" {
 		system("clean");
 #endif // _WIN32
 
+	}
+
+	int GotoChidraqulFolder()
+	{
+#ifdef _WIN32
+		char* appdata = getenv("APPDATA");
+		if (_chdir(appdata))
+		{
+			printf("[client] failed to set working directory\n");
+			return -1;
+		}
+		system("if not exist \"chidraqul\\\" mkdir chidraqul\\");
+		if (_chdir("chidraqul"))
+		{
+			printf("[client] failed to enter chidraqul directory\n");
+			return -1;
+		}
+		system("if not exist \"chidraqul6\\\" mkdir chidraqul6\\");
+		if (_chdir("chidraqul6"))
+		{
+			printf("[client] failed to enter chidraqul6 directory\n");
+			return -1;
+		}
+#elif __APPLE__
+		chdir(getenv("HOME"));
+		if (chdir("Library/Application Support/"))
+		{
+			printf("[client] failed to set working directory\n");
+			return -1;
+		}
+		system("mkdir -p chidraqul");
+		if (chdir("chidraqul/"))
+		{
+			printf("[client] failed to enter chidraqul directory\n");
+			return -1;
+		}
+		system("mkdir -p chidraqul6");
+		if (chdir("chidraqul6/"))
+		{
+			printf("[client] failed to enter chidraqul6 directory\n");
+			return -1;
+		}
+#elif __linux__
+		if (chdir(getenv("HOME")))
+		{
+			printf("[client] failed to set working directory\n");
+			return -1;
+		}
+		//system("mkdir -p chidraqul;echo \"[client] successfully created chidraqul6 directory\";pwd");
+		system("mkdir -p .chidraqul");
+		if (chdir(".chidraqul/"))
+		{
+			printf("[client] failed to enter chidraqul directory\n");
+			return -1;
+		}
+		system("mkdir -p chidraqul6");
+		if (chdir("chidraqul6/"))
+		{
+			printf("[client] failed to enter chidraqul6 directory\n");
+			return -1;
+		}
+#else
+		printf("[client] error OS not supported\n");
+		return -1;
+#endif
+		return 0;
 	}
 
 	int GetDelimiterPos(const char * buffer, char delimiter, int num)

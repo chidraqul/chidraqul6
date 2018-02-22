@@ -20,6 +20,14 @@ extern "C" {
 	void ClearConsole();
 
 	/*
+	Function: GotoChidraqulFolder
+	Performs a system call to navigate into chidraqul folder
+	if no folder found --> create one
+	*/
+
+	int GotoChidraqulFolder();
+
+	/*
 	Function: GetDelimiterPos
 	Performs a search for the num delimiter in a buffer.
 
