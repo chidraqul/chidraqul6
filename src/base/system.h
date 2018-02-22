@@ -25,7 +25,7 @@ extern "C" {
 	if no folder found --> create one
 	*/
 
-	int GotoChidraqulFolder();
+	int GotoChidraqulFolder(const char * env);
 
 	/*
 	Function: GetDelimiterPos

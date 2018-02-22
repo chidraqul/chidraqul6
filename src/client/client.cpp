@@ -65,7 +65,7 @@ int InitClient(ClientSettings * pSettings)
     
     ChillClearScreen();
     printf("[client] Init...\n");
-    if (GotoChidraqulFolder())
+    if (GotoChidraqulFolder("client"))
     {
         printf("[client] error loading chidraqul6 dir\n");
         printf("[client] skipping settings load\n");

@@ -26,67 +26,67 @@ extern "C" {
 
 	}
 
-	int GotoChidraqulFolder()
+	int GotoChidraqulFolder(const char * env)
 	{
 #ifdef _WIN32
 		char* appdata = getenv("APPDATA");
 		if (_chdir(appdata))
 		{
-			printf("[client] failed to set working directory\n");
+			printf("[%s] failed to set working directory\n", env);
 			return -1;
 		}
 		system("if not exist \"chidraqul\\\" mkdir chidraqul\\");
 		if (_chdir("chidraqul"))
 		{
-			printf("[client] failed to enter chidraqul directory\n");
+			printf("[%s] failed to enter chidraqul directory\n", env);
 			return -1;
 		}
 		system("if not exist \"chidraqul6\\\" mkdir chidraqul6\\");
 		if (_chdir("chidraqul6"))
 		{
-			printf("[client] failed to enter chidraqul6 directory\n");
+			printf("[%s] failed to enter chidraqul6 directory\n", env);
 			return -1;
 		}
 #elif __APPLE__
 		chdir(getenv("HOME"));
 		if (chdir("Library/Application Support/"))
 		{
-			printf("[client] failed to set working directory\n");
+			printf("[%s] failed to set working directory\n", env);
 			return -1;
 		}
 		system("mkdir -p chidraqul");
 		if (chdir("chidraqul/"))
 		{
-			printf("[client] failed to enter chidraqul directory\n");
+			printf("[%s] failed to enter chidraqul directory\n", env);
 			return -1;
 		}
 		system("mkdir -p chidraqul6");
 		if (chdir("chidraqul6/"))
 		{
-			printf("[client] failed to enter chidraqul6 directory\n");
+			printf("[%s] failed to enter chidraqul6 directory\n", env);
 			return -1;
 		}
 #elif __linux__
 		if (chdir(getenv("HOME")))
 		{
-			printf("[client] failed to set working directory\n");
+			printf("[%s] failed to set working directory\n", env);
 			return -1;
 		}
 		//system("mkdir -p chidraqul;echo \"[client] successfully created chidraqul6 directory\";pwd");
 		system("mkdir -p .chidraqul");
 		if (chdir(".chidraqul/"))
 		{
-			printf("[client] failed to enter chidraqul directory\n");
+			printf("[%s] failed to enter chidraqul directory\n", env);
 			return -1;
 		}
 		system("mkdir -p chidraqul6");
 		if (chdir("chidraqul6/"))
 		{
-			printf("[client] failed to enter chidraqul6 directory\n");
+			printf("[%s] failed to enter chidraqul6 directory\n", env);
 			return -1;
 		}
 #else
-		printf("[client] error OS not supported\n");
+		printf("[%s] error OS not supported\n", env);
 		return -1;
 #endif
 		return 0;
