@@ -160,6 +160,48 @@ extern "C" {
 		{
 			apPlayers[i] = NULL;
 		}
+
+		int set = LoadServerSettings(pSettings);
+
+		if (set == -1) //load default settings on error
+		{
+			printf("[server] loading default settings...\n");
+			pSettings->Port = 4200;
+		}
+	}
+
+	int LoadServerSettings(ServerSettings * pSettings)
+	{
+		char aSettingsFile[128] = "server.cfg";
+		char aBuf[128];
+
+		printf("[server] Init...\n");
+		if (GotoChidraqulFolder("server"))
+		{
+			printf("[server] error loading chidraqul6 dir\n");
+			printf("[server] skipping settings load\n");
+		}
+		else
+		{
+			printf("[server] loading settings...\n");
+			
+			FILE *pServerSettingsFile;
+
+			pServerSettingsFile = fopen(aSettingsFile, "r");
+			if (pServerSettingsFile == NULL)
+			{
+				printf("[server] error: failed to load settings \n");
+				return -1;
+			}
+
+			fscanf(pServerSettingsFile, "%s", aBuf);
+			printf("[debug] loaded=%s \n", aBuf);
+			pSettings->Port = atoi(aBuf);
+			fclose(pServerSettingsFile);
+
+			printf("[server] loaded port=%d \n", pSettings->Port);
+		}
+		return 0;
 	}
 
 #ifdef __cplusplus

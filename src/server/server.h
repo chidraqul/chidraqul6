@@ -102,6 +102,18 @@ extern "C" {
     
 	void InitServer(ServerSettings * pSettings);
 
+	/*
+	Function: LoadServerSettings
+	Reads server.cfg file in the chidraqul6 directory
+	and stores results in the ServerSettings struct
+
+	Returns:
+	-1 on failure
+	0 on success
+	*/
+
+	int LoadServerSettings(ServerSettings * pSettings);
+
 #ifdef __cplusplus
 }
 #endif
