@@ -24,11 +24,11 @@ void PauseGame()
 	/*
 	cbreak();
 	getchar();
-	nocbreak();
+    nocbreak();
 	*/
 
 /*
-	initscr();
+    initscr();
     noecho();
     cbreak();
     getch();

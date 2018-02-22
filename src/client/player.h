@@ -5,7 +5,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "base.h"
+#include "../base/base.h"
 
 #define FALLING_SPEED 120
 #define JUMPING_SPEED 210

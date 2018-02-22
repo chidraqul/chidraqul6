@@ -6,7 +6,7 @@
 #include "player.h"
 #include "controls.h"
 #include "world.h"
-#include "base.h"
+#include "../base/base.h"
 
 int aBlock[16][3]; // [INDEX] [0 = Alive 1 = PosX 2 = PosY]
 

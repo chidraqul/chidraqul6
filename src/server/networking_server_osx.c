@@ -10,10 +10,6 @@ extern "C" {
 
 #include "networking_server_osx.h"
 
-/*
- ** server.c -- a stream socket server demo
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -31,7 +27,7 @@ extern "C" {
 #include "../base/system.h"
 #include "server.h"
 
-#define PORT "4200"  // the port users will be connecting to
+#define PORT "4200"
 
 #define BACKLOG 10     // how many pending connections queue will hold
 

@@ -2,7 +2,7 @@
 //ChillerDragon copyright (c)
 //started development 2017
 
-#include "base.h"
+#include "../base/base.h"
 #include "render.h"
 #include "world.h"
 #include "controls.h" //TODO: remove me beause only used for debugging

@@ -7,7 +7,7 @@
 #endif // _WIN32
 
 
-#include "base.h"
+#include "../base/base.h"
 #include "controls.h"
 #include "world.h"
 

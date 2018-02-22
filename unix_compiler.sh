@@ -12,6 +12,7 @@ do
     #base
     echo "[BASE]"
     clang src/base/*.c -c
+    clang++ src/base/*.cpp -c -std=c++11
 
     #client
     echo "[CLIENT]"
