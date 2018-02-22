@@ -49,16 +49,16 @@ void ChillClearScreen()
 int DetectOS() //if no compile move me to chidraqul.cpp
 {
 #ifdef _WIN32
-    std::cout << "detected win\n";
+	printf("detected win\n");
     return 1;
 #elif __APPLE__
-    std::cout << "detected os x\n";
+	printf("detected macOS\n");
     return 2;
 #elif __linux__
-    std::cout << "detected linux\n";
+	printf("detected linux\n");
     return 3;
 #else
-    std::cout << "unsupported oss\n";
+    printf("unsupported operating system\n");
     return -1;
 #endif
 }

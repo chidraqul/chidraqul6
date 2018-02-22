@@ -5,7 +5,7 @@
 #ifdef _WIN32
 
 #include "networking_client_win.h"
-#include "base.h"
+#include "../base/base.h"
 
 #include <iostream>
 #include <winsock2.h>

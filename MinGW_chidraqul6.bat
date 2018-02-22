@@ -18,6 +18,7 @@ echo ============================
 :: base
 echo [BASE]
 gcc src/base/*.c -c
+g++ src/base/*.cpp -c
 
 :: client
 echo [CLIENT]
