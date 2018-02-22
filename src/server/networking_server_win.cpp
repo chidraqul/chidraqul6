@@ -13,9 +13,13 @@
 #include "../base/system.h"
 #include "server.h"
 
+ServerSettings srv_settings;
+
 int main()
 {
 	int port = 4200;
+	InitServer(&srv_settings);
+	port = srv_settings.Port;
 
 	WSADATA WSAData;
 
@@ -31,9 +35,6 @@ int main()
 	serverAddr.sin_port = htons(port);
 
 	bind(server, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
-
-
-	InitServer();
 
 	std::cout << "[server] started and listening on port " << port << std::endl;
 

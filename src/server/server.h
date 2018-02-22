@@ -9,6 +9,26 @@
 extern "C" {
 #endif
     
+	typedef struct
+	{
+		int ClientID;
+		int NetState; //idk yet what this is probably some check if this player exsist or something
+
+		int PosX;
+		int PosY;
+		int IsAlive;
+	} Player;
+
+	typedef struct
+	{
+		int Port;
+		char aServername[32];
+	} ServerSettings;
+
+
+
+
+
     /*
      Function: GetPlayerPosX
      Feteches the player position out of client buffers.
@@ -80,17 +100,7 @@ extern "C" {
      For now just cleaning the players array
      */
     
-	void InitServer();
-
-	typedef struct
-	{
-		int ClientID;
-		int NetState; //idk yet what this is probably some check if this player exsist or something
-
-		int PosX;
-		int PosY;
-		int IsAlive;
-	} Player;
+	void InitServer(ServerSettings * pSettings);
 
 #ifdef __cplusplus
 }

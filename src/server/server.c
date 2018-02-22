@@ -154,7 +154,7 @@ extern "C" {
 		return -1;
 	}
 
-	void InitServer()
+	void InitServer(ServerSettings * pSettings)
 	{
 		for (int i = 0; i < MAX_CLIENTS; i++)
 		{
