@@ -17,11 +17,6 @@ extern "C" {
 
 	Player *apPlayers[MAX_CLIENTS];
     
-    void Test()
-    {
-        printf("[test] test failed\n");
-    }
-    
     int GetPlayerPosX(const char * pData)
     {
         char aPos[PACKAGE_SIZE];
