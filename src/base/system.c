@@ -6,12 +6,16 @@
 #include <stdarg.h>
 #include "stdlib.h"
 #include "stdio.h"
+#ifdef _WIN32
 #include <direct.h>
+#else
+#include <unistd.h>
+#endif
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+    
 	void ClearConsole()
 	{
 #ifdef _WIN32

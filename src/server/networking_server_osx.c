@@ -27,11 +27,11 @@ extern "C" {
 #include "../base/system.h"
 #include "server.h"
 
-#define PORT "4200"
-
 #define BACKLOG 10     // how many pending connections queue will hold
 
 int ServerTick = 0; //TODO: remove this because it is only for debugging
+ServerSettings srv_settings;
+char aPort[16];
     
 unsigned long mix(unsigned long a, unsigned long b, unsigned long c)
 {
@@ -71,6 +71,9 @@ void *get_in_addr(struct sockaddr *sa)
 int main(void)
 {
 	char aBuf[16];
+    InitServer(&srv_settings);
+    str_format(aPort, sizeof(aPort), "%d", srv_settings.Port);
+    
     int sockfd, new_fd;  // listen on sock_fd, new connection on new_fd
     struct addrinfo hints, *servinfo, *p;
     struct sockaddr_storage their_addr; // connector's address information
@@ -84,10 +87,8 @@ int main(void)
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE; // use my IP
-
-	InitServer();
     
-    if ((rv = getaddrinfo(NULL, PORT, &hints, &servinfo)) != 0) {
+    if ((rv = getaddrinfo(NULL, aPort, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
         return 1;
     }
@@ -135,7 +136,7 @@ int main(void)
         exit(1);
     }
     
-    printf("server: waiting for connections on port %s ...\n", PORT);
+    printf("server: waiting for connections on port %s ...\n", aPort);
     
     while(1) {  // main accept() loop
         //sleep(1); //be nice c:
@@ -181,8 +182,7 @@ int main(void)
             //=== SEND ===
             if (send(new_fd, aBuf, sizeof(aBuf), 0) == -1)
             {
-                //perror("send");
-                printf("WTFTWTFTWFTWFT\n");
+                perror("send");
             }
             else
             {
