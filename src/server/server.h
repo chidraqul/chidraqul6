@@ -64,8 +64,22 @@ extern "C" {
     
     void MainDataJuggeling(char * pClientData);
 
+    /*
+     Function: GetNextClientID
+     Checks for the next (lowest) unused client id
+     
+     Returns:
+     client id on success
+     -1 on failure (server full)
+     */
+    
 	int GetNextClientID();
 
+    /*
+     Function: InitServer
+     For now just cleaning the players array
+     */
+    
 	void InitServer();
 
 	typedef struct
