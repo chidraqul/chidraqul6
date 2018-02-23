@@ -64,7 +64,7 @@ int DetectOS() //if no compile move me to chidraqul.cpp
 }
 
 #if defined(__APPLE__) || defined(__linux__)
-int kbhit(void)
+int kbhit(void) //unused
 {
     struct termios oldt, newt;
     int ch;
@@ -103,38 +103,10 @@ int kbhit(void)
                 break;
         }
     }
-    
-    /*
-     if(ch != EOF)
-     {
-     ungetc(ch, stdin);
-     return 2;
-     }
-    */
-    
-    /*
-    if (ch == 68) //left
-    {
-        return 1;
-    }
-    else if (ch == 67) //right
-    {
-        return 2;
-    }
-    else if (ch == 65) //up
-    {
-        return 3;
-    }
-    else if (ch == 66) //down
-    {
-        return 4;
-    }
-    */
-    
     return 0;
 }
 
-void KeyPrinter() //a == 97 d == 100
+void KeyPrinter() // unused                a == 97 d == 100
 {
     int ch;
     
