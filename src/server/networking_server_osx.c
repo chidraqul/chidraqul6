@@ -70,7 +70,7 @@ void *get_in_addr(struct sockaddr *sa)
 
 int main(void)
 {
-	char aBuf[16];
+    char aBuf[16];
     InitServer(&srv_settings);
     str_format(aPort, sizeof(aPort), "%d", srv_settings.Port);
     
