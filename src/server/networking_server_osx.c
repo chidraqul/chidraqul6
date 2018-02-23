@@ -25,6 +25,7 @@ extern "C" {
 #include <time.h>
 
 #include "../base/system.h"
+#include "../base/network.h"
 #include "server.h"
 
 #define BACKLOG 10     // how many pending connections queue will hold
@@ -59,6 +60,7 @@ void sigchld_handler(int s)
 
 
 // get sockaddr, IPv4 or IPv6:
+/*
 void *get_in_addr(struct sockaddr *sa)
 {
     if (sa->sa_family == AF_INET) {
@@ -67,6 +69,7 @@ void *get_in_addr(struct sockaddr *sa)
     
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
+*/
 
 int main(void)
 {
