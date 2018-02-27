@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 
-#include "networking_server_osx.h"
+#include "networking_server_unix.h"
 
 #include <stdio.h>
 #include <stdlib.h>
