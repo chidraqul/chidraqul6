@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-#include "networking_client_osx.h"
+#include "networking_client_unix.h"
     
 /*
  ** client.c -- a stream socket client demo

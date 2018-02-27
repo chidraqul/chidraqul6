@@ -2,8 +2,8 @@
 //ChillerDragon copyright (c)
 //started development 2017
 
-#ifndef NETWORKING_CLIENT_OSX_H
-#define NETWORKING_CLIENT_OSX_H
+#ifndef NETWORKING_CLIENT_UNIX_H
+#define NETWORKING_CLIENT_UNIX_H
 
 #include "client.h"
 

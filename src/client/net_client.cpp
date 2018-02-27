@@ -9,7 +9,7 @@
 #include "networking_client_win.h"
 #include "net_client.h"
 #elif (__APPLE__) || (__linux__)
-#include "networking_client_osx.h"
+#include "networking_client_unix.h"
 #include "net_client.h"
 #endif
 
