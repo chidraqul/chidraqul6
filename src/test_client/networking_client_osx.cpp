@@ -5,9 +5,6 @@
 
 #if defined(__APPLE__) || defined(__linux__)
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #include "networking_client_osx.h"
     
@@ -28,12 +25,16 @@ extern "C" {
     
 #include "../base/system.h"
 #include "../base/network.h"
+#include "net_client.h"
+#include "world.h"
+#include "controls.h"
+#include "render.h"
 
 #define PORT "4200" // the port client will be connecting to
 
 #define MAXDATASIZE 100 // max number of bytes we can get at once
 
-char * SendData(const char * pData, ClientSettings * pSettings)
+int NetworkMain(ClientSettings * pSettings, CPlayer& player, CPlayer& player2)
 {
     int sockfd, numbytes;
     char aBuf[MAXDATASIZE];
@@ -48,7 +49,7 @@ char * SendData(const char * pData, ClientSettings * pSettings)
     
     if ((rv = getaddrinfo(pSettings->aServerIP, pSettings->aServerPort, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-        return "error";
+        return -1;
     }
     
     // loop through all the results and connect to the first we can
@@ -70,7 +71,7 @@ char * SendData(const char * pData, ClientSettings * pSettings)
     
     if (p == NULL) {
         fprintf(stderr, "client: failed to connect\n");
-        return "error";
+        return -1;
     }
     
     inet_ntop(p->ai_family, get_in_addr((struct sockaddr *)p->ai_addr),
@@ -79,32 +80,47 @@ char * SendData(const char * pData, ClientSettings * pSettings)
     
     freeaddrinfo(servinfo); // all done with this structure
     
-    //str_format(aBuf, sizeof(aBuf), "%d", pos);
-    //send(sockfd, aBuf, MAXDATASIZE-1,0);
-    send(sockfd, pData, sizeof(pData), 0);
+    char aClientReply[16] = "-1_0_0_0_0"; //idk initital client message
     
-    if ((numbytes = recv(sockfd, aBuf, MAXDATASIZE-1, 0)) == -1) {
-        perror("recv");
-        exit(1);
+    while (1)
+    {
+        /****************
+         *   networking *
+         ****************/
+        
+        send(sockfd, aClientReply, sizeof(aClientReply), 0);
+        printf("\n\n\n\n\n\n\n  sending reply: %s ", aClientReply);
+        
+        if ((numbytes = recv(sockfd, aBuf, MAXDATASIZE-1, 0)) == -1) {
+            perror("recv");
+            exit(1);
+        }
+        aBuf[numbytes] = '\0';
+        
+        
+        //str_format(aClientReply, sizeof(aClientReply), "%s", SuckNetwork(aBuf, player, player2));
+        
+        SuckNetwork(aBuf, player, player2, aClientReply); //side effect should work better than return str
+        
+        /****************
+         *   client     *
+         ****************/
+        
+        HandleInputs(player); //creates LastInpDirX
+        player.OnTick(); //uses LastInpDirX to keep moving in fall
     }
-    
-    aBuf[numbytes] = '\0';
     
     //printf("client: received '%s'\n",aBuf);
     //int recv_pos = atoi(aBuf);
     char * pBuf = &aBuf[0];
     
+    //PumpNetwork(pBuf);
+    
     close(sockfd);
     
-    return pBuf;
+    return -1;
 }
 
-
-    
-    
-#ifdef __cplusplus
-}
-#endif
     
 #endif
 

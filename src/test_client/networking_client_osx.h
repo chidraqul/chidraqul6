@@ -6,12 +6,13 @@
 #define NETWORKING_CLIENT_OSX_H
 
 #include "client.h"
+#include "player.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-char * SendData(const char * pData, ClientSettings * settings);
+int NetworkMain(ClientSettings * settings, CPlayer& player, CPlayer& player2);
 
 #ifdef __cplusplus
 }

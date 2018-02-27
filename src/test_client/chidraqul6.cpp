@@ -8,6 +8,7 @@
 #include "render.h"
 #include "client.h"
 
+#include "networking_client_osx.h"
 #include "net_client.h"
 
 CPlayer *pPlayer = new CPlayer;
@@ -48,8 +49,14 @@ int main()
 	pPlayer->Spawn();
 	pPlayer2->Spawn();
 
+    
+    //moved main loop in networking code
+    NetworkMain(&client_settings, *pPlayer, *pPlayer2);
+    
+    /*
     while (true)
     {
 		OnTick(&client_settings);
     }
+     */
 }

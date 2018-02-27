@@ -36,7 +36,6 @@ do
     echo "[TEST-CLIENT]"
     clang src/base/*.c -c
     clang++ src/base/*.cpp -c -std=c++11
-    clang src/test_client/*.c -c
     clang++ src/test_client/*.cpp -c -std=c++11
     clang++ *.o -lcurses -o chidraqul6_test
     mv *.o obj

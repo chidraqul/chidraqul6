@@ -90,8 +90,34 @@ int GetServerCID(const char * pData)
 	return atoi(aPlayerID);
 }
 
+void SuckNetwork(const char * pServerData, CPlayer& player, CPlayer& player2, char * pClientData)
+{
+    char aSend[PACKAGE_SIZE];
+    char aRecv[PACKAGE_SIZE];
+    str_format(aSend, sizeof(aSend), "%d_%d_%d_", player.ClientID, player.PosX, player.PosY);
+    
+    //printf("DATA: %s SIZE: %d", aSend, sizeof(aSend));
+    //printf("\n\n\n\n\n  aSend: %s ", aSend);
+    
+    str_format(aRecv, sizeof(aRecv), "%s", pServerData);
+    
+    player.ClientID = GetServerCID(aRecv);
+    player.PosX = GetServerPosX(aRecv);
+    int p2_posX = GetServerPlayerX(aRecv, 1);
+    int p2_posY = GetServerPlayerY(aRecv, 1);
+    
+    RenderFrame(player2, p2_posX);
+    player2.UpdatePosition(p2_posX, p2_posY, ' ');
+    
+    char * pSend = &aSend[0];
+    pClientData = pSend;
+    //printf("\n\n\n\n\n  pSend: %s ", pSend);
+    //return pSend; //returning does work shit --> go for side effect
+}
+
 int PumpNetwork(CPlayer& player, CPlayer& player2, ClientSettings * pSettings)
 {
+    /*
 	char aSend[PACKAGE_SIZE];
 	char aRecv[PACKAGE_SIZE];
 	str_format(aSend, sizeof(aSend), "%d_%d_%d_", player.ClientID, player.PosX, player.PosY);
@@ -107,6 +133,6 @@ int PumpNetwork(CPlayer& player, CPlayer& player2, ClientSettings * pSettings)
 
 	RenderFrame(player2, p2_posX);
 	player2.UpdatePosition(p2_posX, p2_posY, ' ');
-
+     */
 	return 0;
 }

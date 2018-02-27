@@ -26,6 +26,31 @@ Returns:
 int PumpNetwork(CPlayer& player, CPlayer& player2, ClientSettings * pSettings);
 
 /*
+ Function: PumpNetwork2
+ Is a new testy version if pumpnetwork which should invert the whole structure
+ 
+ The connection stuff should form the core loop of the game (like server side)
+ So PumpNetwork doesnt call network functions
+ Instead network funtions call PumpNetwork
+*/
+
+//int PumpNetwork2();
+
+/*
+ Function: SuckNetwork
+ Sucks userdata into the network
+ 
+ Parameters:
+    pointer to C-Array holding the data from the server
+    settings pointer to store game information idk
+ 
+ Returns:
+    char pointer to the client data
+ */
+
+void SuckNetwork(const char * pServerData, CPlayer& player, CPlayer& player2, char * pClientData);
+
+/*
 Function: GetServerCID
 Feteches the client id out of the server buffer.
 
