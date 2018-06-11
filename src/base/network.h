@@ -2,6 +2,8 @@
 //ChillerDragon copyright (c)
 //started development 2017
 
+#if defined(__APPLE__) || defined(__linux__)
+
 #ifndef NETWORK_H
 #define NETWORK_H
 
@@ -20,3 +22,5 @@ extern "C" {
 #endif
     
 #endif // NETWORK_H
+
+#endif // APPLE LINUX

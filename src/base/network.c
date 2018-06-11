@@ -2,6 +2,8 @@
 //ChillerDragon copyright (c)
 //started development 2017
 
+#if defined(__APPLE__) || defined(__linux__)
+
 #include "network.h"
 
 #ifdef __cplusplus
@@ -22,3 +24,5 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
+#endif // APPLE LINUX
