@@ -27,6 +27,7 @@ public:
 	int JumpTick;
 	int FallTick;
 	int LastInpResetTick;
+    char DebugMsg[1024];
 	bool IsCollision(int X, int Y);
 	bool IsGrounded();
 	void Spawn();

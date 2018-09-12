@@ -29,6 +29,11 @@ void HandleInputs(CPlayer& player)
         key = getch();
     }
 #endif // _WIN32
+    if (key == 'q')
+    {
+        player.IsDebug ^= 1;
+    }
+
     if (key == 'a')
     {
         player.AimDir = -1; //set aimdir no matter if you walk agianst a wall
@@ -71,9 +76,11 @@ void HandleInputs(CPlayer& player)
 	{
 		player.IsDebug ^= 1;
 	}
-    
+
     if (key == 'a' || key == 'd') //umoved left or right
     {
         player.LastInpResetTick = RESETLASTINP_SPEED;
     }
+
+    sprintf(player.DebugMsg, "Key: %d", key);
 }

@@ -33,6 +33,9 @@ void RenderFrame(CPlayer& player, int recv_pos)
         ChillSetCursor(0, 12);
         str_format(aBuf, sizeof(aBuf), "recv: %d", recv_pos);
         PrintCurrentPos(aBuf);
+        ChillSetCursor(0, 13);
+        str_format(aBuf, sizeof(aBuf), "debug: %s", player.DebugMsg);
+        PrintCurrentPos(aBuf);
 	}
 }
 
