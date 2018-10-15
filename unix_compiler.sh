@@ -58,6 +58,7 @@ do
     clang *.o -o chidraqul6_test_srv
     mv *.o obj
     echo "========================================="
+    [[ $1 != "--no-repeate" ]] || break
     echo "finished press any key to compile agian."
     read -n1
 done

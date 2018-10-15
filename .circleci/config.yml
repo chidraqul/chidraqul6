@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: buildpack-deps:stretch
+    steps:
+      - checkout
+      - run:
+          name: Get dependencies
+          command: |
+            apt-get update -y
+            apt-get install clang libncurses5-dev -y
+      - run:
+          name: Build chidraqul6
+          command: ./unix_compiler.sh --no-repeate
