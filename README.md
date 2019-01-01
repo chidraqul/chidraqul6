@@ -1,4 +1,4 @@
-[![CircleCI Build Status](https://circleci.com/gh/ChillerDragon/chidraqul6/tree/master.png)](https://circleci.com/gh/ChillerDragon/chidraqul6)
+[![CircleCI Build Status](https://circleci.com/gh/chidraqul/chidraqul6/tree/master.png)](https://circleci.com/gh/chidraqul/chidraqul6)
 # chidraqul6 
 chidraqul6 the console game in the 6th generation designed to be cross platform and finally multiplayer
 
