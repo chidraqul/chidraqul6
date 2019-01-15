@@ -13,5 +13,5 @@ jobs:
       - run:
           name: Build chidraqul6
           command: |
-            export $TERM=xterm
+            export TERM=xterm
             ./unix_compiler.sh --no-repeate
