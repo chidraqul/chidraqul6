@@ -2,7 +2,6 @@
 //ChillerDragon copyright (c)
 //started development 2017
 
-circle test
 #include "server.h"
 
 #include <stdio.h>
