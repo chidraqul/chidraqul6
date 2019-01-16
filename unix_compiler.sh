@@ -1,7 +1,12 @@
 #!/bin/bash
 set -e
 mkdir -p obj
-mv *.o obj/ 2>/dev/null
+if [ -e *.o ]
+then
+  # old objects might speed up the build
+  # but currently they mostly fail the build
+  mv *.o obj/
+fi
 while :
 do
     clear
