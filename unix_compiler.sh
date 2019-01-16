@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 mkdir -p obj
+mv *.o obj/ 2>/dev/null
 while :
 do
     clear
